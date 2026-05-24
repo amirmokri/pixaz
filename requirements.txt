@@ -1,0 +1,12 @@
+# PixaZ Brand — Python dependencies
+# PDF generation (HTML → PDF via Python)
+reportlab==4.5.1
+arabic-reshaper==3.0.1
+python-bidi==0.6.10
+Pillow==12.2.0
+
+# WeasyPrint (requires GTK on Windows — skip if GTK not available)
+# weasyprint==68.1
+
+# Note: PDF is generated using Chrome headless (already on system).
+# See brand-book.html + the Chrome subprocess approach in project memory.

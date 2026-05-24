@@ -9,10 +9,10 @@
     :root {
       --dark:     #0D0D12;
       --dark2:    #1A1A26;
-      --purple:   #6C63FF;
-      --purple2:  #8B84FF;
-      --purple-light: #F0EEFF;
-      --orange:   #FF6830;
+      --purple:   #111111;
+      --purple2:  #404040;
+      --purple-light: #F2F2F2;
+      --orange:   #555555;
       --text:     #1E1E2E;
       --sub:      #5A5A7A;
       --white:    #FFFFFF;
@@ -81,7 +81,7 @@
       display: block;
       height: 5px;
       border-radius: 3px;
-      background: var(--purple);
+      background: var(--black);
       opacity: 0.7;
     }
     .cover-brand-en {
@@ -103,7 +103,7 @@
     .cover-divider {
       width: 60px;
       height: 3px;
-      background: var(--purple);
+      background: var(--black);
       margin: 0 auto 20px;
       border-radius: 2px;
     }
@@ -127,7 +127,7 @@
       border-top: 1px solid rgba(255,255,255,0.07);
     }
     .cover-bottom-info { font-size: 9pt; color: rgba(255,255,255,0.25); }
-    .cover-bottom-info span { color: var(--purple); }
+    .cover-bottom-info span { color: var(--black); }
     .cover-dots {
       display: flex;
       gap: 6px;
@@ -138,7 +138,7 @@
       width: 8px;
       height: 8px;
       border-radius: 2px;
-      background: var(--purple);
+      background: var(--black);
       opacity: 0.3;
     }
     .cover-dots i:last-child { opacity: 0.9; }
@@ -177,7 +177,7 @@
     .sec-label {
       font-size: 8pt;
       letter-spacing: 3px;
-      color: var(--purple);
+      color: var(--black);
       text-transform: uppercase;
       direction: ltr;
       margin-bottom: 6px;
@@ -196,7 +196,7 @@
     .sec-title-under {
       width: 44px;
       height: 4px;
-      background: var(--purple);
+      background: var(--black);
       border-radius: 2px;
       margin-bottom: 28px;
     }
@@ -205,7 +205,7 @@
     .sec-num {
       font-size: 110pt;
       font-weight: 900;
-      color: rgba(108,99,255,0.06);
+      color: rgba(0,0,0,0.06);
       position: absolute;
       left: 40px;
       top: 65px;
@@ -220,7 +220,7 @@
     /* ─── QUOTE BLOCK ─── */
     .quote {
       background: var(--purple-light);
-      border-right: 4px solid var(--purple);
+      border-right: 4px solid var(--black);
       padding: 22px 28px;
       border-radius: 0 10px 10px 0;
       margin: 20px 0;
@@ -246,7 +246,7 @@
     .tag.outline {
       background: transparent;
       border: 1.5px solid var(--purple);
-      color: var(--purple);
+      color: var(--black);
     }
     .tag.orange { background: var(--orange); }
 
@@ -264,7 +264,7 @@
       padding: 22px 22px 20px;
       position: relative;
     }
-    .value-card:hover { border-color: var(--purple); }
+    .value-card:hover { border-color: var(--black); }
     .value-icon {
       font-size: 22pt;
       margin-bottom: 10px;
@@ -276,7 +276,7 @@
       left: 18px;
       font-size: 9pt;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--black);
       direction: ltr;
       background: var(--purple-light);
       width: 26px;
@@ -303,7 +303,7 @@
     }
     .value-card.accent .value-title { color: var(--white); }
     .value-card.accent .value-desc { color: rgba(255,255,255,0.5); }
-    .value-card.accent .value-num { background: rgba(108,99,255,0.2); }
+    .value-card.accent .value-num { background: rgba(0,0,0,0.2); }
 
     /* ─── TWO-COL LAYOUT ─── */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px; }
@@ -336,7 +336,7 @@
       width: 7px;
       height: 7px;
       border-radius: 2px;
-      background: var(--purple);
+      background: var(--black);
     }
     .blist li strong { color: var(--text); font-weight: 600; }
 
@@ -359,7 +359,7 @@
       top: 7px;
       width: 26px;
       height: 26px;
-      background: var(--purple);
+      background: var(--black);
       color: white;
       border-radius: 7px;
       font-size: 9pt;
@@ -376,7 +376,7 @@
       border-radius: 12px;
       padding: 24px 22px;
     }
-    .pos-card.yes { background: var(--purple-light); border: 1.5px solid #D0CBFF; }
+    .pos-card.yes { background: var(--purple-light); border: 1.5px solid #DDDDDD; }
     .pos-card.no  { background: #FFF3EE; border: 1.5px solid #FFD0BA; }
     .pos-card h4 {
       font-size: 10.5pt;
@@ -384,7 +384,7 @@
       margin-bottom: 14px;
       padding-bottom: 8px;
     }
-    .pos-card.yes h4 { color: var(--purple); border-bottom: 2px solid #C0BAFF; }
+    .pos-card.yes h4 { color: var(--black); border-bottom: 2px solid #CCCCCC; }
     .pos-card.no  h4 { color: var(--orange); border-bottom: 2px solid #FFBFA0; }
 
     /* ─── PERSONALITY TRAITS ─── */
@@ -401,7 +401,7 @@
     .trait-dot {
       width: 10px;
       height: 10px;
-      background: var(--purple);
+      background: var(--black);
       border-radius: 3px;
       flex-shrink: 0;
       margin-top: 5px;
@@ -431,7 +431,7 @@
       border-radius: 10px;
     }
     .voice-box.old { background: #F5F5F5; border: 1.5px solid #DDD; }
-    .voice-box.new { background: var(--purple-light); border: 1.5px solid #C8C3FF; }
+    .voice-box.new { background: var(--purple-light); border: 1.5px solid #CCCCCC; }
     .voice-label {
       font-size: 8pt;
       font-weight: 700;
@@ -440,7 +440,7 @@
       text-transform: uppercase;
     }
     .voice-box.old .voice-label { color: #999; }
-    .voice-box.new .voice-label { color: var(--purple); }
+    .voice-box.new .voice-label { color: var(--black); }
     .voice-box p { font-size: 10pt; line-height: 1.8; margin: 0; }
     .voice-box.old p { color: #888; text-decoration: line-through; text-decoration-color: #CCC; }
     .voice-box.new p { color: var(--text); font-weight: 500; }
@@ -461,7 +461,7 @@
       left: 24px;
       top: -10px;
       font-size: 80pt;
-      color: var(--purple);
+      color: var(--black);
       opacity: 0.15;
       font-weight: 900;
       line-height: 1;
@@ -489,7 +489,7 @@
     .tl-alt-num {
       font-size: 8pt;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--black);
       direction: ltr;
       margin-bottom: 6px;
     }
@@ -522,7 +522,7 @@
     .wf-num {
       width: 44px;
       height: 44px;
-      background: var(--purple);
+      background: var(--black);
       color: white;
       border-radius: 12px;
       font-size: 15pt;
@@ -544,7 +544,7 @@
       font-size: 8pt;
       padding: 3px 10px;
       background: var(--purple-light);
-      color: var(--purple);
+      color: var(--black);
       border-radius: 20px;
       font-weight: 600;
     }
@@ -560,14 +560,14 @@
     }
     .plan-card.featured {
       background: var(--dark);
-      border-color: var(--purple);
+      border-color: var(--black);
     }
     .plan-badge {
       position: absolute;
       top: -1px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--purple);
+      background: var(--black);
       color: white;
       font-size: 7.5pt;
       font-weight: 700;
@@ -604,7 +604,7 @@
       content: '✓';
       position: absolute;
       right: 0;
-      color: var(--purple);
+      color: var(--black);
       font-weight: 700;
       font-size: 10pt;
     }
@@ -622,7 +622,7 @@
       text-align: center;
     }
     .back-logo img { height: 70px; filter: brightness(0) invert(1); margin-bottom: 32px; }
-    .back-divider { width: 50px; height: 3px; background: var(--purple); margin: 24px auto; border-radius: 2px; }
+    .back-divider { width: 50px; height: 3px; background: var(--black); margin: 24px auto; border-radius: 2px; }
     .back-tagline {
       font-size: 15pt;
       font-weight: 300;
@@ -659,7 +659,7 @@
       justify-content: center;
       font-size: 9pt;
       font-weight: 700;
-      color: var(--purple);
+      color: var(--black);
       direction: ltr;
       flex-shrink: 0;
     }
@@ -691,7 +691,7 @@
       width: 6px;
       height: 6px;
       border-radius: 2px;
-      background: var(--purple);
+      background: var(--black);
     }
 
     /* ─── VISION GOALS ─── */
@@ -751,15 +751,15 @@
     .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
     .ps-box { border-radius: 10px; padding: 18px; }
     .ps-box.problem { background: #FFF3EE; border: 1.5px solid #FFD0BA; }
-    .ps-box.solution { background: var(--purple-light); border: 1.5px solid #D0CBFF; }
+    .ps-box.solution { background: var(--purple-light); border: 1.5px solid #DDDDDD; }
     .ps-box h5 { font-size: 9.5pt; font-weight: 700; margin-bottom: 10px; padding-bottom: 8px; }
     .ps-box.problem h5 { color: var(--orange); border-bottom: 1.5px solid #FFD0BA; }
-    .ps-box.solution h5 { color: var(--purple); border-bottom: 1.5px solid #D0CBFF; }
+    .ps-box.solution h5 { color: var(--black); border-bottom: 1.5px solid #DDDDDD; }
     .ps-box ul { list-style: none; padding: 0; }
     .ps-box ul li { font-size: 9.5pt; color: var(--sub); padding: 4px 16px 4px 0; position: relative; }
     .ps-box ul li::before { content: '›'; position: absolute; right: 0; font-weight: 700; }
     .ps-box.problem ul li::before { color: var(--orange); }
-    .ps-box.solution ul li::before { color: var(--purple); }
+    .ps-box.solution ul li::before { color: var(--black); }
 
     /* decorative purple strip on right of content pages */
     .page-stripe {
@@ -795,10 +795,10 @@
       <span style="width:8px; opacity:.2"></span>
     </div>
     <div class="cover-brand-en">P I X A Z</div>
-    <div class="cover-brand-fa">پیکاز</div>
+    <div class="cover-brand-fa">پیکساز</div>
     <div class="cover-divider"></div>
     <div class="cover-doc-title">سند هویت برند</div>
-    <div class="cover-tagline">«محصولت رو در دنیای بی‌مرز ببین»</div>
+    <div class="cover-tagline">«محصولت رو در دنیای بی مرز ببین»</div>
   </div>
 
   <div class="cover-bottom">
@@ -806,7 +806,7 @@
       نسخه <span>1.0</span> &nbsp;|&nbsp; ۱۴۰۴
     </div>
     <div class="cover-dots">
-      <i></i><i></i><i></i><i style="opacity:.9;background:#FF6830"></i>
+      <i></i><i></i><i></i><i style="opacity:.9;background:#555555"></i>
     </div>
   </div>
 </div>
@@ -838,7 +838,7 @@
       <li class="toc-item">
         <div class="toc-left">
           <div class="toc-n">02</div>
-          <div><div class="toc-title">مأموریت و چشم‌انداز</div><div class="toc-sub">Mission & Vision</div></div>
+          <div><div class="toc-title">مأموریت و چشم انداز</div><div class="toc-sub">Mission & Vision</div></div>
         </div>
         <div class="toc-dots"></div>
         <div class="toc-pg">04</div>
@@ -846,7 +846,7 @@
       <li class="toc-item">
         <div class="toc-left">
           <div class="toc-n">03</div>
-          <div><div class="toc-title">ارزش‌های برند</div><div class="toc-sub">Brand Values</div></div>
+          <div><div class="toc-title">ارزش های برند</div><div class="toc-sub">Brand Values</div></div>
         </div>
         <div class="toc-dots"></div>
         <div class="toc-pg">05</div>
@@ -902,7 +902,7 @@
       <li class="toc-item">
         <div class="toc-left">
           <div class="toc-n">10</div>
-          <div><div class="toc-title">پلن‌های خدمات</div><div class="toc-sub">Service Plans</div></div>
+          <div><div class="toc-title">پلن های خدمات</div><div class="toc-sub">Service Plans</div></div>
         </div>
         <div class="toc-dots"></div>
         <div class="toc-pg">12</div>
@@ -928,37 +928,37 @@
     <div class="sec-title-under"></div>
 
     <p>
-      <strong style="color:var(--text)">پیکاز (PixaZ)</strong> یک استودیوی تخصصی تولید محتوای بصری مبتنی بر هوش مصنوعی است.
-      ما تصاویر و ویدیوهای تبلیغاتی حرفه‌ای برای کسب‌وکارهایی تولید می‌کنیم که محصولات فیزیکی دارند و
-      به محتوای باکیفیت برای حضور در شبکه‌های اجتماعی و فضای دیجیتال نیاز دارند.
+      <strong style="color:var(--text)">پیکساز (PixaZ)</strong> یک استودیوی تخصصی تولید محتوای بصری مبتنی بر هوش مصنوعی است.
+      ما تصاویر و ویدیوهای تبلیغاتی حرفه ای برای کسب وکارهایی تولید می کنیم که محصولات فیزیکی دارند و
+      به محتوای باکیفیت برای حضور در شبکه های اجتماعی و فضای دیجیتال نیاز دارند.
     </p>
     <p>
-      پیکاز با ترکیب هوش مصنوعی نسل جدید و دانش بازاریابی دیجیتال، جایگزینی مدرن، سریع و
-      مقرون‌به‌صرفه برای عکاسی سنتی ارائه می‌دهد.
+      پیکساز با ترکیب هوش مصنوعی نسل جدید و دانش بازاریابی دیجیتال، جایگزینی مدرن، سریع و
+      مقرون به صرفه برای عکاسی سنتی ارائه می دهد.
     </p>
 
     <div class="intro-box">
-      <h4>مشتریان اصلی پیکاز</h4>
+      <h4>مشتریان اصلی پیکساز</h4>
       <ul>
         <li>تولیدکنندگان و فروشندگان پوشاک (زنانه، مردانه و بچگانه)</li>
         <li>برندهای کیف، کفش و اکسسوری</li>
         <li>فروشندگان طلا، جواهر و بدلیجات</li>
         <li>تولیدکنندگان محصولات دکوری، شمع، گلدان، گل و گیاه</li>
-        <li>فروشگاه‌های آنلاین و پیج‌های اینستاگرامی با محور فروش محصول</li>
+        <li>فروشگاه های آنلاین و پیج های اینستاگرامی با محور فروش محصول</li>
       </ul>
     </div>
 
-    <p style="margin-top:16px; font-weight:600; color:var(--text)">ماهیت خدمات پیکاز:</p>
+    <p style="margin-top:16px; font-weight:600; color:var(--text)">ماهیت خدمات پیکساز:</p>
     <p>
-      بر اساس عکس خام محصول و توضیحات مشتری، با استفاده از مدل‌های پیشرفته
-      هوش مصنوعی (Image-to-Image و ابزارهای ویدیویی AI)، محتوای تبلیغاتی تولید می‌کنیم که:
+      بر اساس عکس خام محصول و توضیحات مشتری، با استفاده از مدل های پیشرفته
+      هوش مصنوعی (Image-to-Image و ابزارهای ویدیویی AI)، محتوای تبلیغاتی تولید می کنیم که:
     </p>
 
     <ul class="blist">
-      <li>از نظر بصری جذاب، حرفه‌ای و چشم‌نواز است</li>
-      <li>آماده انتشار در اینستاگرام، وب‌سایت و فروشگاه‌های آنلاین است</li>
-      <li>با هویت بصری و استایل برند مشتری هماهنگ می‌شود</li>
-      <li>نسبت به عکاسی سنتی، سریع‌تر، ارزان‌تر و با تنوع بیشتر تولید می‌شود</li>
+      <li>از نظر بصری جذاب، حرفه ای و چشم نواز است</li>
+      <li>آماده انتشار در اینستاگرام، وب سایت و فروشگاه های آنلاین است</li>
+      <li>با هویت بصری و استایل برند مشتری هماهنگ می شود</li>
+      <li>نسبت به عکاسی سنتی، سریع تر، ارزان تر و با تنوع بیشتر تولید می شود</li>
     </ul>
   </div>
 </div>
@@ -971,38 +971,38 @@
   <div class="page-stripe"></div>
   <div class="page-header">
     <div class="page-header-logo"><img src="logo/Pixaz-logo.jpg" alt="PixaZ"></div>
-    <div class="page-header-sec">مأموریت و چشم‌انداز</div>
+    <div class="page-header-sec">مأموریت و چشم انداز</div>
   </div>
   <div class="page-body" style="position:relative">
     <div class="sec-num">02</div>
     <div class="sec-label">Mission & Vision</div>
-    <div class="sec-title">مأموریت و چشم‌انداز</div>
+    <div class="sec-title">مأموریت و چشم انداز</div>
     <div class="sec-title-under"></div>
 
     <!-- Mission -->
     <p style="font-size:10pt; font-weight:700; color:var(--purple); letter-spacing:1px; margin-bottom:8px">MISSION — مأموریت</p>
     <div class="quote">
       <p>
-        ما در پیکاز، با ترکیب هوش مصنوعی و خلاقیت بصری، محصولات شما را در
-        خیره‌کننده‌ترین قاب‌های تبلیغاتی ممکن نشان می‌دهیم — سریع‌تر از عکاسی سنتی،
-        مقرون‌به‌صرفه‌تر از استودیو، و با خلاقیتی فراتر از دنیای واقعی.
+        ما در پیکساز، با ترکیب هوش مصنوعی و خلاقیت بصری، محصولات شما را در
+        خیره کننده ترین قاب های تبلیغاتی ممکن نشان می دهیم — سریع تر از عکاسی سنتی،
+        مقرون به صرفه تر از استودیو، و با خلاقیتی فراتر از دنیای واقعی.
       </p>
     </div>
 
     <div class="tags" style="margin-bottom:24px">
       <span class="tag">سرعت در تولید</span>
       <span class="tag">خلاقیت بدون مرز</span>
-      <span class="tag orange">صرفه‌جویی در هزینه</span>
+      <span class="tag orange">صرفه جویی در هزینه</span>
       <span class="tag">تمرکز بر فروش</span>
     </div>
 
     <!-- Vision -->
-    <p style="font-size:10pt; font-weight:700; color:var(--purple); letter-spacing:1px; margin-bottom:8px">VISION — چشم‌انداز</p>
+    <p style="font-size:10pt; font-weight:700; color:var(--purple); letter-spacing:1px; margin-bottom:8px">VISION — چشم انداز</p>
     <div class="quote">
       <p>
-        پیکاز در آینده می‌خواهد اولین نامی باشد که هر برند ایرانی با محصول فیزیکی،
-        برای تولید محتوای بصری حرفه‌ای به آن مراجعه می‌کند — نه به‌عنوان یک ابزار،
-        بلکه به‌عنوان یک شریک خلاق بلندمدت در رشد برند.
+        پیکساز در آینده می خواهد اولین نامی باشد که هر برند ایرانی با محصول فیزیکی،
+        برای تولید محتوای بصری حرفه ای به آن مراجعه می کند — نه به عنوان یک ابزار،
+        بلکه به عنوان یک شریک خلاق بلندمدت در رشد برند.
       </p>
     </div>
 
@@ -1018,15 +1018,15 @@
       <div class="vg-item">
         <div class="vg-icon">🤝</div>
         <div class="vg-text">
-          <h5>همکاری‌های بلندمدت</h5>
-          <p>ایجاد پلن‌های ماهانه و اشتراکی برای برندهایی که به تولید محتوای مستمر نیاز دارند.</p>
+          <h5>همکاری های بلندمدت</h5>
+          <p>ایجاد پلن های ماهانه و اشتراکی برای برندهایی که به تولید محتوای مستمر نیاز دارند.</p>
         </div>
       </div>
       <div class="vg-item">
         <div class="vg-icon">📚</div>
         <div class="vg-text">
           <h5>کتابخانه سبک بصری اختصاصی</h5>
-          <p>ساخت پروفایل بصری منحصربه‌فرد برای هر برند تا خروجی‌ها در طول زمان یکپارچگی ظاهری داشته باشند.</p>
+          <p>ساخت پروفایل بصری منحصربه فرد برای هر برند تا خروجی ها در طول زمان یکپارچگی ظاهری داشته باشند.</p>
         </div>
       </div>
     </div>
@@ -1041,12 +1041,12 @@
   <div class="page-stripe"></div>
   <div class="page-header">
     <div class="page-header-logo"><img src="logo/Pixaz-logo.jpg" alt="PixaZ"></div>
-    <div class="page-header-sec">ارزش‌های برند</div>
+    <div class="page-header-sec">ارزش های برند</div>
   </div>
   <div class="page-body" style="position:relative">
     <div class="sec-num">03</div>
     <div class="sec-label">Brand Values</div>
-    <div class="sec-title">ارزش‌های برند</div>
+    <div class="sec-title">ارزش های برند</div>
     <div class="sec-title-under"></div>
 
     <div class="values-grid">
@@ -1055,8 +1055,8 @@
         <div class="value-icon">⚡</div>
         <div class="value-title">سرعت و چابکی</div>
         <div class="value-desc">
-          پیکاز زمان تولید محتوا را از روزها و هفته‌ها به چند ساعت تا چند روز کاهش می‌دهد.
-          مشتری در بازه‌ای کوتاه به محتوای آماده انتشار دسترسی دارد.
+          پیکساز زمان تولید محتوا را از روزها و هفته ها به چند ساعت تا چند روز کاهش می دهد.
+          مشتری در بازه ای کوتاه به محتوای آماده انتشار دسترسی دارد.
         </div>
       </div>
 
@@ -1065,18 +1065,18 @@
         <div class="value-icon">✦</div>
         <div class="value-title">خلاقیت بدون مرز</div>
         <div class="value-desc">
-          محدودیت لوکیشن، مدل و استودیو حذف می‌شود. فضاهای لوکس، مینیمال، فانتزی،
-          طبیعت، شهری و مدل‌های متنوع با کمک هوش مصنوعی قابل خلق هستند.
+          محدودیت لوکیشن، مدل و استودیو حذف می شود. فضاهای لوکس، مینیمال، فانتزی،
+          طبیعت، شهری و مدل های متنوع با کمک هوش مصنوعی قابل خلق هستند.
         </div>
       </div>
 
       <div class="value-card">
         <div class="value-num">03</div>
         <div class="value-icon">💡</div>
-        <div class="value-title">صرفه‌جویی در هزینه</div>
+        <div class="value-title">صرفه جویی در هزینه</div>
         <div class="value-desc">
-          هزینه‌های اجاره استودیو، دستمزد مدل، تجهیزات و هماهنگی‌های پیچیده تا حد
-          زیادی حذف یا کاهش می‌یابند. محتوای حرفه‌ای، بدون هزینه‌های سنگین.
+          هزینه های اجاره استودیو، دستمزد مدل، تجهیزات و هماهنگی های پیچیده تا حد
+          زیادی حذف یا کاهش می یابند. محتوای حرفه ای، بدون هزینه های سنگین.
         </div>
       </div>
 
@@ -1086,23 +1086,23 @@
         <div class="value-title">تمرکز بر هویت برند</div>
         <div class="value-desc">
           هر تصویر باید علاوه بر زیبایی، با هویت برند مشتری هماهنگ باشد.
-          رنگ‌ها، سبک، مدل و حس کلی همه با زبان بصری برند مشتری هم‌سو می‌شوند.
+          رنگ ها، سبک، مدل و حس کلی همه با زبان بصری برند مشتری هم سو می شوند.
         </div>
       </div>
 
       <div class="value-card accent" style="grid-column: 1 / -1;">
-        <div class="value-num" style="background:rgba(108,99,255,.25)">05</div>
+        <div class="value-num" style="background:rgba(0,0,0,.25)">05</div>
         <div style="display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center">
           <div>
             <div class="value-icon" style="color:white">◎</div>
-            <div class="value-title">شفافیت، تعهد و مسئولیت‌پذیری</div>
+            <div class="value-title">شفافیت، تعهد و مسئولیت پذیری</div>
             <div class="value-desc">
-              فرآیند همکاری شفاف است. زمان تحویل، تعداد اصلاحات و هزینه‌ها از ابتدا مشخص می‌شوند.
-              خروجی در زمان توافق‌شده تحویل داده می‌شود و ما پاسخگوی کیفیت کارمان هستیم.
+              فرآیند همکاری شفاف است. زمان تحویل، تعداد اصلاحات و هزینه ها از ابتدا مشخص می شوند.
+              خروجی در زمان توافق شده تحویل داده می شود و ما پاسخگوی کیفیت کارمان هستیم.
             </div>
           </div>
           <div style="text-align:left; direction:ltr">
-            <div style="font-size:36pt; font-weight:900; color:rgba(108,99,255,.25); line-height:1">100%</div>
+            <div style="font-size:36pt; font-weight:900; color:rgba(0,0,0,.25); line-height:1">100%</div>
             <div style="font-size:8pt; color:rgba(255,255,255,.3); letter-spacing:1px">COMMITMENT</div>
           </div>
         </div>
@@ -1129,9 +1129,9 @@
 
     <div class="quote">
       <p>
-        پیکاز یک استودیوی تخصصی تولید عکس و ویدیوی تبلیغاتی مبتنی بر هوش مصنوعی است که به
-        کسب‌وکارهای تولیدکننده محصولات فیزیکی کمک می‌کند، بدون نیاز به عکاسی پرهزینه و زمان‌بر،
-        به سرعت به محتوای حرفه‌ای، متنوع و آماده انتشار دست پیدا کنند.
+        پیکساز یک استودیوی تخصصی تولید عکس و ویدیوی تبلیغاتی مبتنی بر هوش مصنوعی است که به
+        کسب وکارهای تولیدکننده محصولات فیزیکی کمک می کند، بدون نیاز به عکاسی پرهزینه و زمان بر،
+        به سرعت به محتوای حرفه ای، متنوع و آماده انتشار دست پیدا کنند.
       </p>
     </div>
 
@@ -1148,15 +1148,15 @@
       <div class="pos-card no">
         <h4>ما نیستیم ✗</h4>
         <ul class="blist">
-          <li>کسی که صرفاً با یک ابزار AI چند عکس ساده می‌سازد</li>
-          <li>سرویس ارزان و کم‌کیفیت فقط برای پر کردن پیج</li>
+          <li>کسی که صرفاً با یک ابزار AI چند عکس ساده می سازد</li>
+          <li>سرویس ارزان و کم کیفیت فقط برای پر کردن پیج</li>
           <li>جایگزین کامل تیم خلاقیت برند</li>
           <li>یک متخصص فنی صرف بدون درک بازار</li>
         </ul>
       </div>
     </div>
 
-    <p style="margin-top:20px; font-size:10.5pt; font-weight:700; color:var(--text)">مزیت‌های رقابتی پیکاز:</p>
+    <p style="margin-top:20px; font-size:10.5pt; font-weight:700; color:var(--text)">مزیت های رقابتی پیکساز:</p>
 
     <div class="adv-box">
       <div class="adv-item">
@@ -1167,7 +1167,7 @@
       <div class="adv-item">
         <span class="ai-icon">🤖</span>
         <h5>توان فنی AI</h5>
-        <p>استفاده از پیشرفته‌ترین مدل‌های Image-to-Image و Video AI</p>
+        <p>استفاده از پیشرفته ترین مدل های Image-to-Image و Video AI</p>
       </div>
       <div class="adv-item">
         <span class="ai-icon">💬</span>
@@ -1194,13 +1194,13 @@
     <div class="sec-title">شخصیت و لحن برند</div>
     <div class="sec-title-under"></div>
 
-    <p style="margin-bottom:16px">پیکاز در ذهن مخاطب باید با این ویژگی‌ها شناخته شود:</p>
+    <p style="margin-bottom:16px">پیکساز در ذهن مخاطب باید با این ویژگی ها شناخته شود:</p>
 
     <div class="trait-grid">
       <div class="trait">
         <div class="trait-dot"></div>
         <div class="trait-content">
-          <h5>مدرن و به‌روز</h5>
+          <h5>مدرن و به روز</h5>
           <p>همیشه در جریان جدیدترین ابزارها و ترندهای تصویری AI است.</p>
         </div>
       </div>
@@ -1208,40 +1208,40 @@
         <div class="trait-dot" style="background:var(--orange)"></div>
         <div class="trait-content">
           <h5>خلاق و جسور</h5>
-          <p>از ایده‌های نو نمی‌ترسد و مشتری را به تجربه‌های بصری جدید دعوت می‌کند.</p>
+          <p>از ایده های نو نمی ترسد و مشتری را به تجربه های بصری جدید دعوت می کند.</p>
         </div>
       </div>
       <div class="trait">
         <div class="trait-dot" style="background:#4CAF85"></div>
         <div class="trait-content">
-          <h5>قابل‌اعتماد</h5>
-          <p>به تعهداتش پایبند است و کیفیت خروجی را جدی می‌گیرد.</p>
+          <h5>قابل اعتماد</h5>
+          <p>به تعهداتش پایبند است و کیفیت خروجی را جدی می گیرد.</p>
         </div>
       </div>
       <div class="trait">
         <div class="trait-dot" style="background:#E056A0"></div>
         <div class="trait-content">
-          <h5>حرفه‌ای اما صمیمی</h5>
-          <p>بدون فاصله‌های غیرضروری با مشتری، راحت و قابل نزدیک شدن است.</p>
+          <h5>حرفه ای اما صمیمی</h5>
+          <p>بدون فاصله های غیرضروری با مشتری، راحت و قابل نزدیک شدن است.</p>
         </div>
       </div>
     </div>
 
     <p style="margin-top:24px; font-size:10.5pt; font-weight:700; color:var(--text)">لحن و شیوه ارتباط:</p>
     <ul class="blist" style="margin:12px 0 20px">
-      <li><strong>شفاف و مستقیم:</strong> بدون اصطلاحات پیچیده و مبهم، مشتری دقیقاً می‌فهمد چه دریافت می‌کند.</li>
-      <li><strong>نتیجه‌محور:</strong> تمرکز بر اینکه «این محتوا چگونه به فروش محصول کمک می‌کند».</li>
-      <li><strong>مشاورگونه:</strong> پیشنهاد می‌دهد، راهنمایی می‌کند و بهترین گزینه‌ها را توضیح می‌دهد.</li>
+      <li><strong>شفاف و مستقیم:</strong> بدون اصطلاحات پیچیده و مبهم، مشتری دقیقاً می فهمد چه دریافت می کند.</li>
+      <li><strong>نتیجه محور:</strong> تمرکز بر اینکه «این محتوا چگونه به فروش محصول کمک می کند».</li>
+      <li><strong>مشاورگونه:</strong> پیشنهاد می دهد، راهنمایی می کند و بهترین گزینه ها را توضیح می دهد.</li>
     </ul>
 
     <p style="font-size:10pt; font-weight:700; color:var(--text); margin-bottom:4px">نمونه لحن در مکاتبات:</p>
     <div class="voice-compare">
       <div class="voice-box old">
         <div class="voice-label">❌ قدیمی</div>
-        <p>هر طور شما بگید، همون رو انجام می‌دم.</p>
+        <p>هر طور شما بگید، همون رو انجام می دم.</p>
       </div>
       <div class="voice-box new">
-        <div class="voice-label">✓ پیکاز</div>
+        <div class="voice-label">✓ پیکساز</div>
         <p>با توجه به نوع محصولتون و مخاطبتون، دو استایل پیشنهادی داریم که احتمال اثرگذاری بیشتری دارند. یکی رو انتخاب کنید تا شروع کنیم.</p>
       </div>
     </div>
@@ -1265,32 +1265,32 @@
     <div class="sec-title-under"></div>
 
     <p style="margin-bottom:20px">
-      شعار اصلی پیکاز در بیو، وب‌سایت و کمپین‌های اصلی استفاده می‌شود.
-      شعارهای جانبی برای کمپین‌های فصلی، پست‌ها و طراحی‌های مختلف به کار می‌روند.
+      شعار اصلی پیکساز در بیو، وب سایت و کمپین های اصلی استفاده می شود.
+      شعارهای جانبی برای کمپین های فصلی، پست ها و طراحی های مختلف به کار می روند.
     </p>
 
     <div class="tagline-primary">
       <div class="tl-label">Primary Tagline — شعار اصلی</div>
-      <div class="tl-text">پیکاز؛ محصولت رو در دنیای بی‌مرز ببین.</div>
+      <div class="tl-text">پیکساز محصولت رو در دنیای بی مرز ببین.</div>
     </div>
 
     <p style="font-size:10pt; font-weight:700; color:var(--text); margin-bottom:12px">شعارهای جانبی:</p>
     <div class="taglines-alt">
       <div class="tl-alt">
         <div class="tl-alt-num">02</div>
-        <p>فراتر از عکاسی؛ خلق تصویر با پیکاز.</p>
+        <p>فراتر از عکاسی؛ خلق تصویر با پیکساز.</p>
       </div>
       <div class="tl-alt">
         <div class="tl-alt-num">03</div>
-        <p>پیکاز؛ جان‌بخشی به تصاویر محصولات شما.</p>
+        <p>پیکساز؛ جان بخشی به تصاویر محصولات شما.</p>
       </div>
       <div class="tl-alt">
         <div class="tl-alt-num">04</div>
-        <p>آینده‌ی محتوای محصولت، همین‌جاست.</p>
+        <p>آینده ی محتوای محصولت، همین جاست.</p>
       </div>
       <div class="tl-alt">
         <div class="tl-alt-num">05</div>
-        <p>ببین، بساز، بفروش — با پیکاز.</p>
+        <p>ببین، بساز، بفروش — با پیکساز.</p>
       </div>
     </div>
 
@@ -1298,9 +1298,9 @@
       <p style="font-size:10pt; font-weight:700; color:var(--text); margin-bottom:8px">راهنمای استفاده از شعار:</p>
       <ul class="blist">
         <li><strong>بیو اینستاگرام:</strong> شعار اصلی به همراه لینک</li>
-        <li><strong>هدر وب‌سایت:</strong> شعار اصلی یا شعار جانبی شماره ۲</li>
-        <li><strong>کمپین‌های فصلی:</strong> شعارهای جانبی بر اساس موضوع کمپین</li>
-        <li><strong>پست‌های معرفی:</strong> شعار اصلی</li>
+        <li><strong>هدر وب سایت:</strong> شعار اصلی یا شعار جانبی شماره ۲</li>
+        <li><strong>کمپین های فصلی:</strong> شعارهای جانبی بر اساس موضوع کمپین</li>
+        <li><strong>پست های معرفی:</strong> شعار اصلی</li>
       </ul>
     </div>
   </div>
@@ -1346,35 +1346,35 @@
       <div class="aud-card">
         <div class="aud-icon">🛍️</div>
         <div class="aud-title">فروشگاه آنلاین</div>
-        <div class="aud-desc">فروشگاه‌های اینترنتی با تمرکز فروش</div>
+        <div class="aud-desc">فروشگاه های اینترنتی با تمرکز فروش</div>
       </div>
       <div class="aud-card">
         <div class="aud-icon">📱</div>
         <div class="aud-title">پیج اینستاگرام</div>
-        <div class="aud-desc">پیج‌های فعال فروش محصول</div>
+        <div class="aud-desc">پیج های فعال فروش محصول</div>
       </div>
     </div>
 
-    <p style="margin-top:20px; font-size:10.5pt; font-weight:700; color:var(--text)">مشکلات اصلی مشتریان که پیکاز حل می‌کند:</p>
+    <p style="margin-top:20px; font-size:10.5pt; font-weight:700; color:var(--text)">مشکلات اصلی مشتریان که پیکساز حل می کند:</p>
 
     <div class="ps-grid">
       <div class="ps-box problem">
         <h5>مشکلات موجود ✗</h5>
         <ul>
           <li>هزینه بالای عکاسی سنتی</li>
-          <li>زمان‌بر بودن هماهنگی با عکاس و مدل</li>
+          <li>زمان بر بودن هماهنگی با عکاس و مدل</li>
           <li>محدودیت لوکیشن و امکانات</li>
           <li>نیاز مکرر به محتوای متنوع</li>
           <li>محتوای مشابه با رقبا</li>
         </ul>
       </div>
       <div class="ps-box solution">
-        <h5>راه‌حل پیکاز ✓</h5>
+        <h5>راه حل پیکساز ✓</h5>
         <ul>
           <li>تولید محتوا با کسری از هزینه عکاسی</li>
           <li>تحویل در چند ساعت تا چند روز</li>
           <li>هر فضا، هر استایل، بدون محدودیت</li>
-          <li>تولید انبوه محتوای متنوع در کوتاه‌ترین زمان</li>
+          <li>تولید انبوه محتوای متنوع در کوتاه ترین زمان</li>
           <li>محتوای اختصاصی با هویت بصری یکتا</li>
         </ul>
       </div>
@@ -1400,22 +1400,22 @@
 
     <div class="quote">
       <p>
-        با پیکاز، بدون نیاز به عکاسی پرهزینه و پیچیده، برای هر محصول خود تصاویر و
-        ویدیوهای تبلیغاتی حرفه‌ای بسازید — سریع، خلاق، مقرون‌به‌صرفه و هماهنگ با
+        با پیکساز، بدون نیاز به عکاسی پرهزینه و پیچیده، برای هر محصول خود تصاویر و
+        ویدیوهای تبلیغاتی حرفه ای بسازید — سریع، خلاق، مقرون به صرفه و هماهنگ با
         هویت برند شما.
       </p>
     </div>
 
-    <p style="margin-top:16px; font-size:10.5pt; font-weight:700; color:var(--text)">آنچه پیکاز ارائه می‌دهد:</p>
+    <p style="margin-top:16px; font-size:10.5pt; font-weight:700; color:var(--text)">آنچه پیکساز ارائه می دهد:</p>
 
     <div class="vp-features">
       <div class="vp-feat">
-        <h5>📸 عکس‌های تبلیغاتی</h5>
-        <p>تولید تصاویر جذاب و حرفه‌ای از محصولات با پس‌زمینه‌ها و استایل‌های متنوع، آماده انتشار.</p>
+        <h5>📸 عکس های تبلیغاتی</h5>
+        <p>تولید تصاویر جذاب و حرفه ای از محصولات با پس زمینه ها و استایل های متنوع، آماده انتشار.</p>
       </div>
       <div class="vp-feat">
         <h5>🎬 ویدیوهای کوتاه</h5>
-        <p>تولید ویدیوهای ۵ تا ۱۵ ثانیه‌ای برای استوری، ریلز و کمپین‌های تبلیغاتی.</p>
+        <p>تولید ویدیوهای ۵ تا ۱۵ ثانیه ای برای استوری، ریلز و کمپین های تبلیغاتی.</p>
       </div>
       <div class="vp-feat">
         <h5>🎨 انتخاب سبک اختصاصی</h5>
@@ -1423,15 +1423,15 @@
       </div>
       <div class="vp-feat">
         <h5>📦 فایل آماده انتشار</h5>
-        <p>تحویل در فرمت‌های JPG، PNG و MP4 با اندازه و نسبت تصویر مناسب هر پلتفرم.</p>
+        <p>تحویل در فرمت های JPG، PNG و MP4 با اندازه و نسبت تصویر مناسب هر پلتفرم.</p>
       </div>
       <div class="vp-feat">
-        <h5>📅 پلن‌های مستمر</h5>
-        <p>امکان همکاری پروژه‌ای یا در قالب پلن‌های هفتگی و ماهانه برای تولید محتوای منظم.</p>
+        <h5>📅 پلن های مستمر</h5>
+        <p>امکان همکاری پروژه ای یا در قالب پلن های هفتگی و ماهانه برای تولید محتوای منظم.</p>
       </div>
       <div class="vp-feat">
         <h5>🔄 اصلاح و بازبینی</h5>
-        <p>چرخه‌های اصلاح مشخص در هر پلن، بدون هزینه اضافی در محدوده تعریف‌شده.</p>
+        <p>چرخه های اصلاح مشخص در هر پلن، بدون هزینه اضافی در محدوده تعریف شده.</p>
       </div>
     </div>
   </div>
@@ -1453,14 +1453,14 @@
     <div class="sec-title">فرآیند کاری</div>
     <div class="sec-title-under"></div>
 
-    <p style="margin-bottom:20px">همکاری با پیکاز در پنج مرحله ساده و شفاف انجام می‌شود:</p>
+    <p style="margin-bottom:20px">همکاری با پیکساز در پنج مرحله ساده و شفاف انجام می شود:</p>
 
     <div class="workflow">
       <div class="wf-step">
         <div class="wf-num">1</div>
         <div class="wf-content">
           <h4>مشاوره و دریافت اطلاعات اولیه</h4>
-          <p>دریافت عکس‌های محصول و ثبت جزئیات: نوع خروجی، پلتفرم هدف، استایل مورد نظر
+          <p>دریافت عکس های محصول و ثبت جزئیات: نوع خروجی، پلتفرم هدف، استایل مورد نظر
           (استودیویی، لوکس، مینیمال، فانتزی، طبیعت و ...)، و ترجیح در مورد مدل در صورت نیاز.</p>
           <div class="wf-tags">
             <span class="wf-tag">دریافت تصاویر محصول</span>
@@ -1474,7 +1474,7 @@
         <div class="wf-num">2</div>
         <div class="wf-content">
           <h4>انتخاب پلن و تأیید جزئیات</h4>
-          <p>معرفی پلن‌های موجود و انتخاب پلن مناسب بر اساس بودجه، تعداد محصول و هدف.
+          <p>معرفی پلن های موجود و انتخاب پلن مناسب بر اساس بودجه، تعداد محصول و هدف.
           تأیید نهایی جزئیات پروژه قبل از شروع تولید.</p>
           <div class="wf-tags">
             <span class="wf-tag">انتخاب پلن</span>
@@ -1487,8 +1487,8 @@
         <div class="wf-num">3</div>
         <div class="wf-content">
           <h4>تولید محتوا</h4>
-          <p>طراحی پرامپت‌ها بر اساس تصویر محصول، استایل انتخابی و هویت برند.
-          تولید چند نسخه اولیه و انتخاب بهترین خروجی‌ها برای ارائه به مشتری.</p>
+          <p>طراحی پرامپت ها بر اساس تصویر محصول، استایل انتخابی و هویت برند.
+          تولید چند نسخه اولیه و انتخاب بهترین خروجی ها برای ارائه به مشتری.</p>
           <div class="wf-tags">
             <span class="wf-tag">طراحی پرامپت</span>
             <span class="wf-tag">تولید AI</span>
@@ -1501,10 +1501,10 @@
         <div class="wf-num">4</div>
         <div class="wf-content">
           <h4>بازبینی و اصلاح</h4>
-          <p>ارسال پیش‌نمایش (Preview) به مشتری. دریافت بازخورد و لیست اصلاحات جزئی
-          و اعمال تغییرات در محدوده اصلاحات تعریف‌شده برای هر پلن.</p>
+          <p>ارسال پیش نمایش (Preview) به مشتری. دریافت بازخورد و لیست اصلاحات جزئی
+          و اعمال تغییرات در محدوده اصلاحات تعریف شده برای هر پلن.</p>
           <div class="wf-tags">
-            <span class="wf-tag">ارسال پیش‌نمایش</span>
+            <span class="wf-tag">ارسال پیش نمایش</span>
             <span class="wf-tag">دریافت بازخورد</span>
             <span class="wf-tag">اصلاح</span>
           </div>
@@ -1515,9 +1515,9 @@
         <div class="wf-num">5</div>
         <div class="wf-content">
           <h4>تحویل نهایی</h4>
-          <p>تحویل نسخه نهایی عکس‌ها به فرمت JPG/PNG و ویدیوها به فرمت MP4 با
+          <p>تحویل نسخه نهایی عکس ها به فرمت JPG/PNG و ویدیوها به فرمت MP4 با
           نسبت تصویر مناسب (مثلاً ۴:۵ یا ۹:۱۶ برای اینستاگرام). در صورت توافق،
-          نسخه بدون واترمارک و آرشیوی نیز تحویل داده می‌شود.</p>
+          نسخه بدون واترمارک و آرشیوی نیز تحویل داده می شود.</p>
           <div class="wf-tags">
             <span class="wf-tag">JPG / PNG</span>
             <span class="wf-tag">MP4</span>
@@ -1537,24 +1537,24 @@
   <div class="page-stripe"></div>
   <div class="page-header">
     <div class="page-header-logo"><img src="logo/Pixaz-logo.jpg" alt="PixaZ"></div>
-    <div class="page-header-sec">پلن‌های خدمات</div>
+    <div class="page-header-sec">پلن های خدمات</div>
   </div>
   <div class="page-body" style="position:relative">
     <div class="sec-num">10</div>
     <div class="sec-label">Service Plans</div>
-    <div class="sec-title">پلن‌های خدمات</div>
+    <div class="sec-title">پلن های خدمات</div>
     <div class="sec-title-under"></div>
 
     <p style="margin-bottom:4px">
-      پیکاز چهار پلن اصلی ارائه می‌دهد تا هر کسب‌وکاری، در هر مرحله از رشد،
-      پلن مناسب خود را بیابد. قیمت‌گذاری دقیق پس از مشاوره اولیه و بر اساس
-      نوع محصول و حجم کار مشخص می‌شود.
+      پیکساز چهار پلن اصلی ارائه می دهد تا هر کسب وکاری، در هر مرحله از رشد،
+      پلن مناسب خود را بیابد. قیمت گذاری دقیق پس از مشاوره اولیه و بر اساس
+      نوع محصول و حجم کار مشخص می شود.
     </p>
 
     <div class="plans-grid">
       <div class="plan-card">
         <div class="plan-name">پایه</div>
-        <div class="plan-sub">مناسب برای شروع و آشنایی با خدمات پیکاز</div>
+        <div class="plan-sub">مناسب برای شروع و آشنایی با خدمات پیکساز</div>
         <ul class="plan-features">
           <li>۳ محصول</li>
           <li>۲ عکس تبلیغاتی برای هر محصول (۶ عکس)</li>
@@ -1565,7 +1565,7 @@
       </div>
 
       <div class="plan-card featured">
-        <div class="plan-badge">محبوب‌ترین</div>
+        <div class="plan-badge">محبوب ترین</div>
         <div class="plan-name">استاندارد</div>
         <div class="plan-sub" style="color:rgba(255,255,255,.35)">برای برندهایی که به محتوای منظم نیاز دارند</div>
         <ul class="plan-features">
@@ -1579,7 +1579,7 @@
       </div>
 
       <div class="plan-card">
-        <div class="plan-name">حرفه‌ای</div>
+        <div class="plan-name">حرفه ای</div>
         <div class="plan-sub">برای برندهای با حجم تولید بالا</div>
         <ul class="plan-features">
           <li>۱۰ محصول</li>
@@ -1606,7 +1606,7 @@
     </div>
 
     <p style="margin-top:14px; font-size:9pt; color:var(--sub); text-align:center">
-      * اعداد و قیمت‌ها پس از مشاوره اولیه و بر اساس نوع محصول مشخص می‌شوند.
+      * اعداد و قیمت ها پس از مشاوره اولیه و بر اساس نوع محصول مشخص می شوند.
     </p>
   </div>
 </div>
@@ -1622,13 +1622,13 @@
     <div class="back-divider"></div>
     <div class="back-tagline">
       ما اینجاییم تا محصولات شما را<br>
-      <strong>آن‌طور که شایسته‌اند</strong> نشان دهیم.
+      <strong>آن طور که شایسته اند</strong> نشان دهیم.
     </div>
     <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:16px">
-      <span class="tag outline" style="border-color:rgba(108,99,255,.4); color:var(--purple2)">هوش مصنوعی</span>
-      <span class="tag outline" style="border-color:rgba(108,99,255,.4); color:var(--purple2)">خلاقیت بصری</span>
-      <span class="tag outline" style="border-color:rgba(108,99,255,.4); color:var(--purple2)">تولید محتوا</span>
-      <span class="tag outline" style="border-color:rgba(108,99,255,.4); color:var(--purple2)">برند‌سازی</span>
+      <span class="tag outline" style="border-color:rgba(0,0,0,.4); color:var(--purple2)">هوش مصنوعی</span>
+      <span class="tag outline" style="border-color:rgba(0,0,0,.4); color:var(--purple2)">خلاقیت بصری</span>
+      <span class="tag outline" style="border-color:rgba(0,0,0,.4); color:var(--purple2)">تولید محتوا</span>
+      <span class="tag outline" style="border-color:rgba(0,0,0,.4); color:var(--purple2)">برند سازی</span>
     </div>
   </div>
 
@@ -1647,7 +1647,7 @@
         <div class="bc-val">hello@pixaz.ir</div>
       </div>
     </div>
-    <div class="back-footer">پیکاز — سند هویت برند — نسخه ۱.۰ — ۱۴۰۴</div>
+    <div class="back-footer">پیکساز — سند هویت برند — نسخه ۱.۰ — ۱۴۰۴</div>
   </div>
 </div>
 

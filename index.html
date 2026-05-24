@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>پیکساز — Beyond the lens, into the imagination</title>
+  <meta name="description" content="پیکساز — استودیوی تولید عکس و ویدیوی تبلیغاتی با هوش مصنوعی. از عکس خام محصول تا محتوای حرفه‌ای آماده انتشار.">
+  <link rel="canonical" href="https://pixaz-ai.ir">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -27,7 +29,10 @@
       --radius: 16px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
 
     body {
       font-family: var(--font-fa);
@@ -55,22 +60,50 @@
     .reveal-delay-4 { transition-delay: 0.4s; }
     .reveal-delay-5 { transition-delay: 0.5s; }
 
+    /* ─── TOP BAR ────────────────────────────────────────── */
+    .top-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 110;
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .top-bar-inner {
+      max-width: 1280px; margin: 0 auto; padding: 9px 60px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px 28px; flex-wrap: wrap; font-size: 12.5px;
+    }
+    .top-bar a {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: rgba(255,255,255,0.72); font-weight: 500;
+      transition: color var(--transition);
+    }
+    .top-bar a:hover { color: var(--white); }
+    .top-bar-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.15); }
+    .top-bar-bale {
+      background: rgba(255,255,255,0.1); padding: 4px 14px;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.12);
+    }
+
     /* ─── NAVBAR ─────────────────────────────────────────── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 37px; left: 0; right: 0; z-index: 100;
+      padding: 16px 60px;
+      display: flex; align-items: center; justify-content: space-between;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
     }
     nav.scrolled {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 var(--gray-200);
-      padding: 14px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--gray-200), 0 8px 32px rgba(0,0,0,0.04);
+      padding: 12px 60px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-brand img { height: 38px; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-brand-fa { font-size: 17px; font-weight: 800; color: var(--black); }
+    .nav-brand-en {
+      font-size: 10px; font-weight: 600; color: var(--gray-400);
+      font-family: var(--font-en); letter-spacing: 2px; text-transform: uppercase;
     }
     .nav-logo img { height: 36px; }
     .nav-links {
@@ -117,7 +150,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 120px 60px 80px;
+      padding: 148px 60px 80px;
       gap: 60px;
       position: relative;
       overflow: hidden;
@@ -834,53 +867,93 @@
       letter-spacing: 1px;
     }
 
+    /* ─── CONTACT CHANNELS ───────────────────────────────── */
+    .contact-channels {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    }
+    .contact-channel {
+      display: flex; align-items: center; gap: 14px; padding: 16px 18px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      transition: background var(--transition), transform 0.2s;
+    }
+    .contact-channel:hover {
+      background: rgba(255,255,255,0.1); transform: translateY(-2px);
+    }
+    .contact-channel-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-channel-label {
+      display: block; font-size: 11px; color: rgba(255,255,255,0.4);
+      font-family: var(--font-en);
+    }
+    .contact-channel-value {
+      display: block; font-size: 14px; font-weight: 700; color: var(--white);
+      direction: ltr; text-align: right;
+    }
+
     /* ─── FOOTER ────────────────────────────────────────────── */
     footer {
-      background: var(--gray-900);
-      color: var(--white);
-      padding: 64px 60px 40px;
+      background: linear-gradient(180deg, #0a0a0a 0%, var(--gray-900) 100%);
+      color: var(--white); padding: 0;
     }
+    .footer-main { padding: 72px 60px 48px; max-width: 1280px; margin: 0 auto; }
     .footer-top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 60px;
-      padding-bottom: 48px;
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 48px; padding-bottom: 48px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 32px;
     }
-    .footer-logo img { height: 38px; filter: brightness(0) invert(1); margin-bottom: 16px; }
-    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; font-style: italic; }
+    .footer-logo img { height: 42px; filter: brightness(0) invert(1); margin-bottom: 18px; }
+    .footer-brand-name { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .footer-tagline {
+      font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75;
+      font-style: italic; margin-bottom: 20px; max-width: 300px;
+    }
+    .footer-cta-mini {
+      display: inline-flex; font-size: 13px; font-weight: 700;
+      color: var(--black); background: var(--white);
+      padding: 10px 18px; border-radius: 10px;
+      transition: transform 0.2s;
+    }
+    .footer-cta-mini:hover { transform: translateY(-2px); }
     .footer-col h4 {
-      font-size: 13px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+      font-family: var(--font-en);
     }
     .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li { margin-bottom: 12px; }
     .footer-col ul li a {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
+      font-size: 14px; color: rgba(255,255,255,0.6);
       transition: color var(--transition);
     }
     .footer-col ul li a:hover { color: white; }
+    .footer-contact-list li { display: flex; gap: 10px; margin-bottom: 14px; }
+    .footer-contact-list .fc-sub {
+      display: block; font-size: 11px; color: rgba(255,255,255,0.35);
+      font-family: var(--font-en); margin-top: 2px;
+    }
     .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.25);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      padding: 24px 60px 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0,0,0,0.25);
+      font-size: 13px; color: rgba(255,255,255,0.3);
     }
-    .footer-social { display: flex; gap: 16px; }
+    .footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
     .footer-social a {
-      color: rgba(255,255,255,0.35);
-      font-size: 13px;
-      font-family: var(--font-en);
-      transition: color var(--transition);
+      color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 600;
+      font-family: var(--font-en); padding: 8px 14px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: color var(--transition), background var(--transition);
     }
-    .footer-social a:hover { color: white; }
+    .footer-social a:hover {
+      color: white; background: rgba(255,255,255,0.08);
+    }
 
     /* ─── MOBILE MENU ───────────────────────────────────────── */
     .mobile-menu {
@@ -920,12 +993,19 @@
       .ba-grid { grid-template-columns: repeat(3, 1fr); }
       .portfolio-grid { columns: 3; }
     }
+    @media (max-width: 1100px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .contact-channels { grid-template-columns: 1fr; }
+    }
     @media (max-width: 800px) {
-      nav { padding: 16px 24px; }
+      .top-bar-inner { padding: 8px 20px; font-size: 11px; }
+      .top-bar-divider { display: none; }
+      nav { top: 34px; padding: 14px 20px; }
       nav.scrolled { padding: 12px 24px; }
+      .nav-brand-text { display: none; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
-      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+      .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
       .hero-right { order: -1; }
       .hero-ba { max-height: 380px; }
       .section { padding: 72px 24px; }
@@ -936,8 +1016,9 @@
       .portfolio-grid { columns: 2; }
       .pricing-grid { grid-template-columns: 1fr; }
       .qr-section { grid-template-columns: 1fr; gap: 48px; padding: 72px 24px; }
+      .footer-main { padding: 56px 24px 40px; }
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; padding: 20px 24px 28px; }
     }
     @media (max-width: 480px) {
       .ba-grid { grid-template-columns: 1fr; }
@@ -958,15 +1039,34 @@
   <a href="#process" onclick="closeMobileMenu()">فرآیند</a>
   <a href="#pricing" onclick="closeMobileMenu()">پلن ها</a>
   <a href="#contact" onclick="closeMobileMenu()" class="btn-primary">شروع همکاری</a>
+  <a href="tel:+989214049280" onclick="closeMobileMenu()">۰۹۲۱۴۰۴۹۲۸۰</a>
+  <a href="https://ble.ir/pixaz" onclick="closeMobileMenu()" target="_blank" rel="noopener">پیام در بله</a>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════════ -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="tel:+989214049280">📞 ۰۹۲۱۴۰۴۹۲۸۰</a>
+    <span class="top-bar-divider" aria-hidden="true"></span>
+    <a href="https://pixaz-ai.ir" target="_blank" rel="noopener">pixaz-ai.ir</a>
+    <span class="top-bar-divider" aria-hidden="true"></span>
+    <a href="https://ble.ir/pixaz" class="top-bar-bale" target="_blank" rel="noopener">پیام در بله</a>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════
      NAVBAR
 ══════════════════════════════════════════ -->
 <nav id="mainNav">
-  <div class="nav-logo">
+  <a href="#" class="nav-brand">
     <img src="logo/Pixaz-logo.png" alt="PixaZ">
-  </div>
+    <span class="nav-brand-text">
+      <span class="nav-brand-fa">پیکساز</span>
+      <span class="nav-brand-en">PixaZ Studio</span>
+    </span>
+  </a>
   <ul class="nav-links">
     <li><a href="#portfolio">نمونه کارها</a></li>
     <li><a href="#services">خدمات</a></li>
@@ -974,7 +1074,7 @@
     <li><a href="#pricing">پلن ها</a></li>
     <li><a href="#contact" class="nav-cta">شروع همکاری</a></li>
   </ul>
-  <div class="nav-burger" onclick="openMobileMenu()">
+  <div class="nav-burger" onclick="openMobileMenu()" aria-label="منو">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -1075,7 +1175,7 @@
   <div class="sec-header reveal">
     <div class="sec-tag">Before / After</div>
     <h2 class="sec-heading">از عکس خام تا تصویر حرفه ای</h2>
-    <p class="sec-sub">با پیکاز، همین عکسی که الان داری کافی است. بقیه کار با ماست.</p>
+    <p class="sec-sub">با پیکساز، همین عکسی که الان داری کافی است. بقیه کار با ماست.</p>
   </div>
 
   <div class="ba-main-wrapper reveal">
@@ -1337,14 +1437,24 @@
       همکاری را<br>همین الان<br>شروع کن
     </h2>
     <p class="qr-sub">
-      QR کد را اسکن کن، یا از طریق اینستاگرام و سایت با ما در ارتباط باش. اولین مشاوره رایگان است.
+      QR کد را اسکن کن، یا از طریق تلفن، بله، اینستاگرام و سایت با ما در ارتباط باش. اولین مشاوره رایگان است.
     </p>
-    <div style="display:flex; gap:14px; flex-wrap:wrap;">
-      <a href="https://instagram.com/pixaz.ai" class="btn-primary" style="background:white; color:var(--black); border-color:white;">
-        @pixaz.ai
+    <div class="contact-channels">
+      <a href="tel:+989214049280" class="contact-channel">
+        <span class="contact-channel-icon">📞</span>
+        <span><span class="contact-channel-label">Phone</span><span class="contact-channel-value">۰۹۲۱۴۰۴۹۲۸۰</span></span>
       </a>
-      <a href="https://pixaz.ir" class="btn-secondary" style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.7);">
-        pixaz.ir
+      <a href="https://ble.ir/pixaz" class="contact-channel" target="_blank" rel="noopener">
+        <span class="contact-channel-icon">💬</span>
+        <span><span class="contact-channel-label">Bale</span><span class="contact-channel-value">ble.ir/pixaz</span></span>
+      </a>
+      <a href="https://instagram.com/pixaz.ai" class="contact-channel" target="_blank" rel="noopener">
+        <span class="contact-channel-icon">📷</span>
+        <span><span class="contact-channel-label">Instagram</span><span class="contact-channel-value">@pixaz.ai</span></span>
+      </a>
+      <a href="https://pixaz-ai.ir" class="contact-channel" target="_blank" rel="noopener">
+        <span class="contact-channel-icon">🌐</span>
+        <span><span class="contact-channel-label">Website</span><span class="contact-channel-value">pixaz-ai.ir</span></span>
       </a>
     </div>
   </div>
@@ -1352,7 +1462,7 @@
     <div class="qr-frame">
       <img src="qr-code.png" alt="QR Code پیکساز" id="qrImg">
     </div>
-    <div class="qr-caption">SCAN TO VISIT PIXAZ.IR</div>
+    <div class="qr-caption">SCAN TO VISIT PIXAZ-AI.IR</div>
   </div>
 </section>
 
@@ -1360,34 +1470,49 @@
      FOOTER
 ══════════════════════════════════════════ -->
 <footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo"><img src="logo/Pixaz-logo.png" alt="PixaZ"></div>
-      <div class="footer-tagline">Beyond the lens, into the imagination</div>
-    </div>
-    <div class="footer-col">
-      <h4>لینک ها</h4>
-      <ul>
-        <li><a href="#portfolio">نمونه کارها</a></li>
-        <li><a href="#services">خدمات</a></li>
-        <li><a href="#process">فرآیند</a></li>
-        <li><a href="#pricing">پلن ها</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>تماس</h4>
-      <ul>
-        <li><a href="https://instagram.com/pixaz.ai">اینستاگرام: @pixaz.ai</a></li>
-        <li><a href="https://pixaz.ir">pixaz.ir</a></li>
-        <li><a href="mailto:hello@pixaz.ir">hello@pixaz.ir</a></li>
-      </ul>
+  <div class="footer-main">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="logo/Pixaz-logo.png" alt="PixaZ"></div>
+        <div class="footer-brand-name">پیکساز</div>
+        <div class="footer-tagline">Beyond the lens, into the imagination — استودیوی تولید محتوای بصری با هوش مصنوعی</div>
+        <a href="#contact" class="footer-cta-mini">شروع همکاری ←</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#portfolio">نمونه کارها</a></li>
+          <li><a href="#services">خدمات</a></li>
+          <li><a href="#process">فرآیند</a></li>
+          <li><a href="#pricing">پلن ها</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">عکس تبلیغاتی AI</a></li>
+          <li><a href="#services">ویدیو کوتاه</a></li>
+          <li><a href="#pricing">پلن اشتراکی</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact-list">
+          <li><span>📞</span><a href="tel:+989214049280">۰۹۲۱۴۰۴۹۲۸۰<span class="fc-sub">Phone</span></a></li>
+          <li><span>💬</span><a href="https://ble.ir/pixaz" target="_blank" rel="noopener">پیام در بله<span class="fc-sub">Bale</span></a></li>
+          <li><span>📷</span><a href="https://instagram.com/pixaz.ai" target="_blank" rel="noopener">@pixaz.ai<span class="fc-sub">Instagram</span></a></li>
+          <li><span>🌐</span><a href="https://pixaz-ai.ir" target="_blank" rel="noopener">pixaz-ai.ir<span class="fc-sub">Website</span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
     <span>۱۴۰۴ © پیکساز — تمام حقوق محفوظ است</span>
     <div class="footer-social">
-      <a href="https://instagram.com/pixaz.ai">Instagram</a>
-      <a href="https://pixaz.ir">Website</a>
+      <a href="tel:+989214049280">Phone</a>
+      <a href="https://ble.ir/pixaz" target="_blank" rel="noopener">Bale</a>
+      <a href="https://instagram.com/pixaz.ai" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://pixaz-ai.ir" target="_blank" rel="noopener">Website</a>
     </div>
   </div>
 </footer>

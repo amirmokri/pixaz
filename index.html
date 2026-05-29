@@ -86,7 +86,7 @@
     /* ─── NAVBAR ─────────────────────────────────────────── */
     nav {
       position: fixed; top: 37px; left: 0; right: 0; z-index: 100;
-      padding: 16px 60px;
+      padding: 22px 60px;
       display: flex; align-items: center; justify-content: space-between;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
     }
@@ -95,20 +95,20 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 1px 0 var(--gray-200), 0 8px 32px rgba(0,0,0,0.04);
-      padding: 12px 60px;
+      padding: 16px 60px;
     }
-    .nav-brand { display: flex; align-items: center; gap: 12px; }
-    .nav-brand img { height: 38px; }
+    .nav-brand { display: flex; align-items: center; gap: 16px; }
+    .nav-brand img { height: 44px; }
     .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
     .nav-brand-fa { font-size: 17px; font-weight: 800; color: var(--black); }
     .nav-brand-en {
       font-size: 10px; font-weight: 600; color: var(--gray-400);
       font-family: var(--font-en); letter-spacing: 2px; text-transform: uppercase;
     }
-    .nav-logo img { height: 36px; }
+    .nav-logo img { height: 44px; }
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 44px;
       list-style: none;
       align-items: center;
     }
@@ -122,7 +122,7 @@
     .nav-cta {
       background: var(--black);
       color: var(--white) !important;
-      padding: 10px 22px;
+      padding: 12px 26px;
       border-radius: 8px;
       font-weight: 600 !important;
       transition: background var(--transition), transform 0.2s !important;
@@ -347,6 +347,7 @@
       gap: 0;
       animation: marqueeScroll 28s linear infinite;
       white-space: nowrap;
+      direction: ltr;
     }
     .marquee-track:hover { animation-play-state: paused; }
     .marquee-item {
@@ -906,8 +907,8 @@
       gap: 48px; padding-bottom: 48px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .footer-logo img { height: 42px; filter: brightness(0) invert(1); margin-bottom: 18px; }
-    .footer-brand-name { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .footer-logo img { height: 60px; filter: brightness(0) invert(1); margin-bottom: 14px; }
+    .footer-brand-img { height: 26px; filter: brightness(0) invert(1); margin-bottom: 12px; display: block; }
     .footer-tagline {
       font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75;
       font-style: italic; margin-bottom: 20px; max-width: 300px;
@@ -1040,7 +1041,8 @@
   <a href="#pricing" onclick="closeMobileMenu()">پلن ها</a>
   <a href="#contact" onclick="closeMobileMenu()" class="btn-primary">شروع همکاری</a>
   <a href="tel:+989214049280" onclick="closeMobileMenu()">۰۹۲۱۴۰۴۹۲۸۰</a>
-  <a href="https://ble.ir/pixaz" onclick="closeMobileMenu()" target="_blank" rel="noopener">پیام در بله</a>
+  <a href="https://t.me/pixaz" onclick="closeMobileMenu()" target="_blank" rel="noopener">تلگرام</a>
+  <!-- <a href="https://ble.ir/pixaz" onclick="closeMobileMenu()" target="_blank" rel="noopener">پیام در بله</a> -->
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -1052,7 +1054,7 @@
     <span class="top-bar-divider" aria-hidden="true"></span>
     <a href="https://pixaz-ai.ir" target="_blank" rel="noopener">pixaz-ai.ir</a>
     <span class="top-bar-divider" aria-hidden="true"></span>
-    <a href="https://ble.ir/pixaz" class="top-bar-bale" target="_blank" rel="noopener">پیام در بله</a>
+    <a href="https://t.me/pixaz" class="top-bar-bale" target="_blank" rel="noopener">✈️ تلگرام</a>
   </div>
 </div>
 
@@ -1456,14 +1458,18 @@
         <span class="contact-channel-icon">📞</span>
         <span><span class="contact-channel-label">Phone</span><span class="contact-channel-value">۰۹۲۱۴۰۴۹۲۸۰</span></span>
       </a>
-      <a href="https://ble.ir/pixaz" class="contact-channel" target="_blank" rel="noopener">
+      <a href="https://t.me/pixaz" class="contact-channel" target="_blank" rel="noopener">
+        <span class="contact-channel-icon">✈️</span>
+        <span><span class="contact-channel-label">Telegram</span><span class="contact-channel-value">t.me/pixaz</span></span>
+      </a>
+      <!-- <a href="https://ble.ir/pixaz" class="contact-channel" target="_blank" rel="noopener">
         <span class="contact-channel-icon">💬</span>
         <span><span class="contact-channel-label">Bale</span><span class="contact-channel-value">ble.ir/pixaz</span></span>
-      </a>
-      <a href="https://instagram.com/pixaz.ai" class="contact-channel" target="_blank" rel="noopener">
+      </a> -->
+      <!-- <a href="https://instagram.com/pixaz.ai" class="contact-channel" target="_blank" rel="noopener">
         <span class="contact-channel-icon">📷</span>
         <span><span class="contact-channel-label">Instagram</span><span class="contact-channel-value">@pixaz.ai</span></span>
-      </a>
+      </a> -->
       <a href="https://pixaz-ai.ir" class="contact-channel" target="_blank" rel="noopener">
         <span class="contact-channel-icon">🌐</span>
         <span><span class="contact-channel-label">Website</span><span class="contact-channel-value">pixaz-ai.ir</span></span>
@@ -1486,8 +1492,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="logo/logo-bg-removed.png" alt="PixaZ"></div>
-        <div class="footer-brand-name">پیکساز</div>
-        <!-- <img src="logo/brand-name-bg-removed.png" alt="PixaZ"> -->
+        <img src="logo/brand-name-bg-removed.png" alt="PixaZ" class="footer-brand-img">
         <div class="footer-tagline">Beyond the lens, into the imagination — استودیوی تولید محتوای بصری با هوش مصنوعی</div>
         <a href="#contact" class="footer-cta-mini">شروع همکاری ←</a>
       </div>
@@ -1512,8 +1517,9 @@
         <h4>Contact</h4>
         <ul class="footer-contact-list">
           <li><span>📞</span><a href="tel:+989214049280">۰۹۲۱۴۰۴۹۲۸۰<span class="fc-sub">Phone</span></a></li>
+          <li><span>💬</span><a href="https://t.me/pixaz" target="_blank" rel="noopener">t.me/pixaz<span class="fc-sub">Telegram</span></a></li>
           <li><span>💬</span><a href="https://ble.ir/pixaz" target="_blank" rel="noopener">پیام در بله<span class="fc-sub">Bale</span></a></li>
-          <li><span>📷</span><a href="https://instagram.com/pixaz.ai" target="_blank" rel="noopener">@pixaz.ai<span class="fc-sub">Instagram</span></a></li>
+          <!-- <li><span>📷</span><a href="https://instagram.com/pixaz.ai" target="_blank" rel="noopener">@pixaz.ai<span class="fc-sub">Instagram</span></a></li> -->
           <li><span>🌐</span><a href="https://pixaz-ai.ir" target="_blank" rel="noopener">pixaz-ai.ir<span class="fc-sub">Website</span></a></li>
         </ul>
       </div>
@@ -1523,8 +1529,9 @@
     <span>۱۴۰۴ © پیکساز — تمام حقوق محفوظ است</span>
     <div class="footer-social">
       <a href="tel:+989214049280">Phone</a>
-      <a href="https://ble.ir/pixaz" target="_blank" rel="noopener">Bale</a>
-      <a href="https://instagram.com/pixaz.ai" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://t.me/pixaz" target="_blank" rel="noopener">Telegram</a>
+      <!-- <a href="https://ble.ir/pixaz" target="_blank" rel="noopener">Bale</a> -->
+      <!-- <a href="https://instagram.com/pixaz.ai" target="_blank" rel="noopener">Instagram</a> -->
       <a href="https://pixaz-ai.ir" target="_blank" rel="noopener">Website</a>
     </div>
   </div>

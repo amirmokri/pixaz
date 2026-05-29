@@ -706,17 +706,25 @@
       transition: transform 0.5s ease;
     }
     .portfolio-item:hover img { transform: scale(1.04); }
-    .portfolio-overlay {
+.portfolio-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.08) 55%, transparent 100%);
       opacity: 0;
       transition: opacity var(--transition);
       display: flex;
-      align-items: flex-end;
-      padding: 20px;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 18px;
     }
     .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-client-label {
+      font-size: 15px; font-weight: 800;
+      color: white; font-family: var(--font-en);
+      letter-spacing: 0.2px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
     .portfolio-tag {
       display: inline-flex;
       align-items: center;
@@ -730,6 +738,7 @@
       border-radius: 20px;
       letter-spacing: 1px;
       font-family: var(--font-en);
+      align-self: flex-start;
     }
 
     /* ─── PRICING ─────────────────────────────────────────── */
@@ -1350,35 +1359,67 @@
   <div class="portfolio-grid">
     <div class="portfolio-item reveal">
       <img src="post/model10.webp" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Mostafa Tailor</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-1">
       <img src="post/model3.jpg" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Sito Shop</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-2">
       <img src="post/model5.webp" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Mostafa Tailor</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-3">
       <img src="post/model7.webp" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Sito Shop</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal">
       <img src="post/model9.webp" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Sito Shop</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-1">
       <img src="post/model4.jpg" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Aramesh</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-2">
       <img src="post/model6.webp" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Mostafa Tailor</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-2">
       <img src="post/model8.webp" alt="نمونه کار پیکساز" loading="lazy">
-      <div class="portfolio-overlay"><span class="portfolio-tag">✦ AI GENERATED</span></div>
+
+      <div class="portfolio-overlay">
+        <span class="portfolio-client-label">Sito Shop</span>
+        <span class="portfolio-tag">✦ AI GENERATED</span>
+      </div>
     </div>
   </div>
 </section>

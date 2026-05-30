@@ -639,6 +639,19 @@
       background: rgba(255,255,255,0.92);
       color: var(--black);
     }
+    /* Idle pulse on each card's handle to advertise interactivity.
+       Stops permanently the moment the visitor first touches the card. */
+    @keyframes baHandlePulse {
+      0%   { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0   rgba(255,255,255,0.55); }
+      70%  { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 12px rgba(255,255,255,0);    }
+      100% { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0   rgba(255,255,255,0);    }
+    }
+    .ba-card:not(.interacted) .ba-card-handle {
+      animation: baHandlePulse 2.6s ease-out 1.2s infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ba-card:not(.interacted) .ba-card-handle { animation: none; }
+    }
 
     /* ─── SERVICES ────────────────────────────────────────── */
     .services-grid {
@@ -1752,6 +1765,57 @@
       update(pct);
     }, { passive: false });
   });
+
+  /* ── Samples cards: idle-pulse stop + one-shot auto-sweep on scroll-in ──
+     This pass is intentionally additive so it cooperates with whichever
+     slider implementation is active (range-driven or pointer-driven). */
+  (function enhanceBaCards() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.ba-card').forEach(card => {
+      const range  = card.querySelector('.ba-card-range');
+      const after  = card.querySelector('.ba-card-after');
+      const line   = card.querySelector('.ba-card-line');
+      const handle = card.querySelector('.ba-card-handle');
+      if (!after) return;
+
+      function setPct(v) {
+        const pct = Math.max(0, Math.min(100, v));
+        after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        if (line)   line.style.left   = pct + '%';
+        if (handle) handle.style.left = pct + '%';
+        if (range)  range.value = pct;
+      }
+
+      const markInteracted = () => card.classList.add('interacted');
+      card.addEventListener('pointerdown', markInteracted, { once: true });
+      card.addEventListener('touchstart',  markInteracted, { once: true, passive: true });
+      if (range) range.addEventListener('input', markInteracted, { once: true });
+
+      if (reduceMotion) return;
+
+      let played = false;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting || played) return;
+          if (card.classList.contains('interacted')) { obs.disconnect(); return; }
+          played = true;
+          obs.disconnect();
+          const t0 = performance.now();
+          const duration = 1800;
+          (function frame(now) {
+            if (card.classList.contains('interacted')) { setPct(50); return; }
+            const t = Math.min(1, (now - t0) / duration);
+            // single smooth sweep: 50 → 72 → 50 → 28 → 50
+            setPct(50 + Math.sin(t * Math.PI * 2) * 22);
+            if (t < 1) requestAnimationFrame(frame);
+            else setPct(50);
+          })(t0);
+        });
+      }, { threshold: 0.45 });
+      obs.observe(card);
+    });
+  })();
 
   /* Auto-animate hero slider on load */
   let heroAnim = 0;

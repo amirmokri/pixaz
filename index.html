@@ -512,9 +512,48 @@
       text-align: center;
       margin-top: 16px;
       font-size: 12px;
-      color: var(--gray-400);
+      color: var(--gray-500);
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .ba-instruction-fa {
+      font-family: var(--font-fa);
+      font-weight: 600;
+    }
+    .ba-instruction-en {
       font-family: var(--font-en);
-      letter-spacing: 1px;
+      font-size: 10.5px;
+      color: var(--gray-400);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    /* Section-header chips that anchor the Samples section in scale */
+    .ba-header-chips {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .ba-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--gray-700);
+    }
+    .ba-chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--black);
     }
 
     /* ─── BEFORE/AFTER CARDS GRID ─────────────────────────── */
@@ -573,6 +612,132 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 7;
+    }
+    /* Small corner pills so each card reads as a comparison at a glance */
+    .ba-card-tag {
+      position: absolute;
+      bottom: 10px;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 4px 11px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+      pointer-events: none;
+      z-index: 5;
+      font-family: var(--font-fa);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      line-height: 1.4;
+    }
+    .ba-card-tag-before {
+      right: 10px;
+      background: rgba(0,0,0,0.62);
+      color: #fff;
+    }
+    .ba-card-tag-after {
+      left: 10px;
+      background: rgba(255,255,255,0.92);
+      color: var(--black);
+    }
+    /* Closing CTA card at the end of the comparison grid */
+    .ba-card.ba-card-cta {
+      background: var(--black);
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      overflow: hidden;
+    }
+    .ba-card.ba-card-cta::before {
+      content: '';
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.10), transparent 55%);
+      pointer-events: none;
+    }
+    .ba-card.ba-card-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity: 0.18;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .ba-card.ba-card-cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .ba-card.ba-card-cta:hover::after { opacity: 0.32; }
+    .ba-cta-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 28px 22px;
+    }
+    .ba-cta-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 900;
+      transition: transform var(--transition);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .ba-card.ba-card-cta:hover .ba-cta-icon { transform: scale(1.08) rotate(-8deg); }
+    .ba-cta-title {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+    .ba-cta-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 200px;
+    }
+    .ba-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: background var(--transition), color var(--transition);
+    }
+    .ba-card.ba-card-cta:hover .ba-cta-pill {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    /* Idle pulse on each card's handle to advertise interactivity.
+       Stops permanently the moment the visitor first touches the card. */
+    @keyframes baHandlePulse {
+      0%   { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0   rgba(255,255,255,0.55); }
+      70%  { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 12px rgba(255,255,255,0);    }
+      100% { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0   rgba(255,255,255,0);    }
+    }
+    .ba-card:not(.interacted) .ba-card-handle {
+      animation: baHandlePulse 2.6s ease-out 1.2s infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ba-card:not(.interacted) .ba-card-handle { animation: none; }
     }
 
     /* ─── SERVICES ────────────────────────────────────────── */
@@ -1194,6 +1359,11 @@
     <div class="sec-tag">Before / After</div>
     <h2 class="sec-heading">از عکس خام تا تصویر حرفه ای</h2>
     <p class="sec-sub">با پیکساز، همین عکسی که الان داری کافیه. بقیه کار با ماست.</p>
+    <div class="ba-header-chips">
+      <span class="ba-chip"><span class="ba-chip-dot"></span> +۵۰ نمونه واقعی</span>
+      <span class="ba-chip"><span class="ba-chip-dot"></span> تحویل تا ۴۸ ساعت</span>
+      <span class="ba-chip"><span class="ba-chip-dot"></span> اولین مشاوره رایگان</span>
+    </div>
   </div>
 
   <div class="ba-main-wrapper reveal">
@@ -1212,7 +1382,10 @@
       <div class="ba-main-label">عکس اصلی محصول (قبل)</div>
       <div class="ba-main-label after-label">خروجی پیکساز AI (بعد)</div>
     </div>
-    <div class="ba-instruction">← drag to compare →</div>
+    <div class="ba-instruction">
+      <span class="ba-instruction-fa">برای مقایسه، دستگیره را بکشید</span>
+      <span class="ba-instruction-en">↔ drag the handle to compare</span>
+    </div>
   </div>
 
   <!-- All pairs grid -->
@@ -1223,6 +1396,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-2">
       <div class="ba-card-before"><img src="pre/model8.webp" alt="قبل"></div>
@@ -1230,6 +1405,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model3.jpeg" alt="قبل"></div>
@@ -1237,6 +1414,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-4">
       <div class="ba-card-before"><img src="pre/model4.jpeg" alt="قبل"></div>
@@ -1244,6 +1423,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-1">
       <div class="ba-card-before"><img src="pre/model6.webp" alt="قبل"></div>
@@ -1251,6 +1432,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-2">
       <div class="ba-card-before"><img src="pre/model7.webp" alt="قبل"></div>
@@ -1258,6 +1441,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model5.webp" alt="قبل"></div>
@@ -1265,6 +1450,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model9.jpeg" alt="قبل"></div>
@@ -1272,7 +1459,17 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
+    <a href="#contact" class="ba-card ba-card-cta reveal reveal-delay-4" aria-label="شروع همکاری با پیکساز">
+      <div class="ba-cta-inner">
+        <div class="ba-cta-icon" aria-hidden="true">→</div>
+        <div class="ba-cta-title">محصول شما؟</div>
+        <div class="ba-cta-sub">نمونه بعدی روی این تابلو، تصویر برند شماست.</div>
+        <span class="ba-cta-pill">شروع همکاری ←</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1642,7 +1839,7 @@
   );
 
   /* Card sliders */
-  document.querySelectorAll('.ba-card').forEach(card => {
+  document.querySelectorAll('.ba-card:not(.ba-card-cta)').forEach(card => {
     const range  = card.querySelector('.ba-card-range');
     const after  = card.querySelector('.ba-card-after');
     const line   = card.querySelector('.ba-card-line');
@@ -1663,6 +1860,57 @@
       update(pct);
     }, { passive: false });
   });
+
+  /* ── Samples cards: idle-pulse stop + one-shot auto-sweep on scroll-in ──
+     This pass is intentionally additive so it cooperates with whichever
+     slider implementation is active (range-driven or pointer-driven). */
+  (function enhanceBaCards() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.ba-card').forEach(card => {
+      const range  = card.querySelector('.ba-card-range');
+      const after  = card.querySelector('.ba-card-after');
+      const line   = card.querySelector('.ba-card-line');
+      const handle = card.querySelector('.ba-card-handle');
+      if (!after) return;
+
+      function setPct(v) {
+        const pct = Math.max(0, Math.min(100, v));
+        after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        if (line)   line.style.left   = pct + '%';
+        if (handle) handle.style.left = pct + '%';
+        if (range)  range.value = pct;
+      }
+
+      const markInteracted = () => card.classList.add('interacted');
+      card.addEventListener('pointerdown', markInteracted, { once: true });
+      card.addEventListener('touchstart',  markInteracted, { once: true, passive: true });
+      if (range) range.addEventListener('input', markInteracted, { once: true });
+
+      if (reduceMotion) return;
+
+      let played = false;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting || played) return;
+          if (card.classList.contains('interacted')) { obs.disconnect(); return; }
+          played = true;
+          obs.disconnect();
+          const t0 = performance.now();
+          const duration = 1800;
+          (function frame(now) {
+            if (card.classList.contains('interacted')) { setPct(50); return; }
+            const t = Math.min(1, (now - t0) / duration);
+            // single smooth sweep: 50 → 72 → 50 → 28 → 50
+            setPct(50 + Math.sin(t * Math.PI * 2) * 22);
+            if (t < 1) requestAnimationFrame(frame);
+            else setPct(50);
+          })(t0);
+        });
+      }, { threshold: 0.45 });
+      obs.observe(card);
+    });
+  })();
 
   /* Auto-animate hero slider on load */
   let heroAnim = 0;

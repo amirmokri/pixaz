@@ -523,9 +523,48 @@
       text-align: center;
       margin-top: 16px;
       font-size: 12px;
-      color: var(--gray-400);
+      color: var(--gray-500);
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .ba-instruction-fa {
+      font-family: var(--font-fa);
+      font-weight: 600;
+    }
+    .ba-instruction-en {
       font-family: var(--font-en);
-      letter-spacing: 1px;
+      font-size: 10.5px;
+      color: var(--gray-400);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    /* Section-header chips that anchor the Samples section in scale */
+    .ba-header-chips {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .ba-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--gray-700);
+    }
+    .ba-chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--black);
     }
 
     /* ─── BEFORE/AFTER CARDS GRID ─────────────────────────── */
@@ -1298,6 +1337,11 @@
     <div class="sec-tag">Before / After</div>
     <h2 class="sec-heading">از عکس خام تا تصویر حرفه ای</h2>
     <p class="sec-sub">با پیکساز، همین عکسی که الان داری کافیه. بقیه کار با ماست.</p>
+    <div class="ba-header-chips">
+      <span class="ba-chip"><span class="ba-chip-dot"></span> +۵۰ نمونه واقعی</span>
+      <span class="ba-chip"><span class="ba-chip-dot"></span> تحویل تا ۴۸ ساعت</span>
+      <span class="ba-chip"><span class="ba-chip-dot"></span> اولین مشاوره رایگان</span>
+    </div>
   </div>
 
   <div class="ba-main-wrapper reveal">
@@ -1316,7 +1360,10 @@
       <div class="ba-main-label">عکس اصلی محصول (قبل)</div>
       <div class="ba-main-label after-label">خروجی پیکساز AI (بعد)</div>
     </div>
-    <div class="ba-instruction">← drag to compare →</div>
+    <div class="ba-instruction">
+      <span class="ba-instruction-fa">برای مقایسه، دستگیره را بکشید</span>
+      <span class="ba-instruction-en">↔ drag the handle to compare</span>
+    </div>
   </div>
 
   <!-- All pairs grid -->

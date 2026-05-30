@@ -316,6 +316,8 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 12;
+      direction: ltr;
+      pointer-events: none;
     }
     .ba-label-pill {
       position: absolute;
@@ -486,6 +488,8 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 7;
+      direction: ltr;
+      pointer-events: none;
     }
     .ba-main-labels {
       display: flex;
@@ -574,6 +578,8 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 7;
+      direction: ltr;
+      pointer-events: none;
     }
 
     /* ─── SERVICES ────────────────────────────────────────── */
@@ -1605,37 +1611,73 @@
     document.body.style.overflow = '';
   }
 
-  /* ── Before/After sliders (generic) ── */
-  function initSlider(rangeEl, afterEl, lineEl, handleEl) {
+  /* ── Before/After sliders (generic) ──
+     Uses pointer events on the container so the handle always tracks the
+     real cursor position, independent of the page's RTL direction. The
+     hidden <input type="range"> is kept only for keyboard accessibility. */
+  function initSlider(container, rangeEl, afterEl, lineEl, handleEl) {
+    let dragging = false;
+
     function update(val) {
-      afterEl.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
-      if (lineEl)   lineEl.style.left = val + '%';
-      if (handleEl) handleEl.style.left = val + '%';
+      const v = Math.max(0, Math.min(100, Number(val)));
+      afterEl.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+      if (lineEl)   lineEl.style.left   = v + '%';
+      if (handleEl) handleEl.style.left = v + '%';
+      if (rangeEl && Number(rangeEl.value) !== v) rangeEl.value = v;
     }
-    rangeEl.addEventListener('input', () => update(rangeEl.value));
-    // Touch support
-    const container = rangeEl.closest('[class*="ba-"]') || rangeEl.parentElement;
-    container.addEventListener('touchmove', (e) => {
-      e.preventDefault();
+
+    function pctFromEvent(e) {
       const rect = container.getBoundingClientRect();
-      const x = e.touches[0].clientX - rect.left;
-      const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
-      rangeEl.value = pct;
-      update(pct);
-    }, { passive: false });
+      const x = e.clientX - rect.left;
+      return (x / rect.width) * 100;
+    }
+
+    container.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      try { container.setPointerCapture && container.setPointerCapture(e.pointerId); } catch (_) {}
+      update(pctFromEvent(e));
+      e.preventDefault();
+    });
+
+    container.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      update(pctFromEvent(e));
+    });
+
+    const endDrag = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      if (e && container.releasePointerCapture && e.pointerId !== undefined) {
+        try { container.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
+    };
+    container.addEventListener('pointerup', endDrag);
+    container.addEventListener('pointercancel', endDrag);
+    container.addEventListener('pointerleave', (e) => { if (dragging && e.buttons === 0) endDrag(e); });
+
+    if (rangeEl) {
+      rangeEl.addEventListener('input', () => update(rangeEl.value));
+    }
+
     return update;
   }
 
   /* Hero slider */
+  const heroBaEl = document.getElementById('heroBa');
   const heroUpdate = initSlider(
+    heroBaEl,
     document.getElementById('heroBaRange'),
     document.getElementById('heroBaAfter'),
     document.getElementById('heroBaLine'),
     document.getElementById('heroBaHandle')
   );
+  // Stop the hero auto-animation as soon as the visitor interacts with it
+  let heroUserTouched = false;
+  heroBaEl.addEventListener('pointerdown', () => { heroUserTouched = true; });
 
   /* Main slider */
   const mainUpdate = initSlider(
+    document.getElementById('baMain'),
     document.getElementById('baMainRange'),
     document.getElementById('baMainAfter'),
     document.getElementById('baMainLine'),
@@ -1644,31 +1686,20 @@
 
   /* Card sliders */
   document.querySelectorAll('.ba-card').forEach(card => {
-    const range  = card.querySelector('.ba-card-range');
-    const after  = card.querySelector('.ba-card-after');
-    const line   = card.querySelector('.ba-card-line');
-    const handle = card.querySelector('.ba-card-handle');
-    function update(val) {
-      after.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
-      line.style.left = val + '%';
-      handle.style.left = val + '%';
-      handle.style.transform = `translate(-50%, -50%)`;
-    }
-    range.addEventListener('input', () => update(range.value));
-    card.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      const rect = card.getBoundingClientRect();
-      const x = e.touches[0].clientX - rect.left;
-      const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
-      range.value = pct;
-      update(pct);
-    }, { passive: false });
+    initSlider(
+      card,
+      card.querySelector('.ba-card-range'),
+      card.querySelector('.ba-card-after'),
+      card.querySelector('.ba-card-line'),
+      card.querySelector('.ba-card-handle')
+    );
   });
 
   /* Auto-animate hero slider on load */
   let heroAnim = 0;
   let heroDir = 1;
   function animateHero() {
+    if (heroUserTouched) return;
     heroAnim += heroDir * 0.4;
     if (heroAnim >= 60) heroDir = -1;
     if (heroAnim <= 40) heroDir = 1;
@@ -1677,9 +1708,11 @@
   }
   heroAnim = 0;
   setTimeout(() => {
+    if (heroUserTouched) return;
     let target = 50;
     let current = 0;
     function intro() {
+      if (heroUserTouched) return;
       current += (target - current) * 0.06 + 0.5;
       heroUpdate(current);
       if (current < target - 0.5) requestAnimationFrame(intro);

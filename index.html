@@ -100,8 +100,8 @@
       box-shadow: 0 1px 0 var(--gray-200), 0 8px 32px rgba(0,0,0,0.04);
       padding: 16px 60px;
     }
-    .nav-brand { display: flex; align-items: center; gap: 8px; direction: ltr; }
-    .nav-brand img { height: 44px; }
+    .nav-brand { display: flex; align-items: center; gap: 2px; direction: ltr; }
+    .nav-brand img { height: 46px; }
     .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
     .nav-brand-fa { font-size: 17px; font-weight: 800; color: var(--black); }
     .nav-brand-en {
@@ -251,7 +251,7 @@
     .btn-secondary:hover { border-color: var(--black); transform: translateY(-2px); }
     .hero-tagline {
       margin-top: 48px;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--gray-400);
       font-family: var(--font-en);
       letter-spacing: 1.5px;
@@ -987,6 +987,12 @@
       border: 1px solid rgba(255,255,255,0.08);
       pointer-events: none;
     }
+    .partner-logo img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      display: block;
+    }
     .partner-meta {
       text-align: center;
       display: flex;
@@ -1487,7 +1493,7 @@
       <div class="ba-main-label after-label">خروجی پیکساز AI (بعد)</div>
     </div>
     <div class="ba-instruction">
-      <span class="ba-instruction-fa">برای مقایسه، دستگیره را بکشید</span>
+      <span class="ba-instruction-fa">برای مقایسه، نوار را بکشید</span>
       <span class="ba-instruction-en">↔ drag the handle to compare</span>
     </div>
   </div>
@@ -1627,7 +1633,7 @@
     </div>
     <div class="process-step reveal reveal-delay-1">
       <div class="process-num">۲</div>
-      <div class="process-title">استایل انتخاب می کنیم</div>
+      <div class="process-title">استایل انتخاب می کنی</div>
       <div class="process-desc">لوکس، مینیمال، فانتزی، طبیعت یا شهری</div>
     </div>
     <div class="process-step reveal reveal-delay-2">
@@ -1728,24 +1734,33 @@
   </div>
   <div class="partners-grid">
     <div class="partner-card reveal reveal-delay-1">
-      <div class="partner-logo" aria-hidden="true">MT</div>
+      <!-- <div class="partner-logo" aria-hidden="true">MT</div> -->
+       <div class="partner-logo">
+        <img src="logo/partners/mostafa-tailor.svg" alt="Mostafa Tailor logo">
+       </div>
       <div class="partner-meta">
         <div class="partner-name">Mostafa Tailor</div>
         <div class="partner-name-fa">مصطفی تیلور</div>
       </div>
     </div>
     <div class="partner-card reveal reveal-delay-2">
-      <div class="partner-logo" aria-hidden="true">SS</div>
-      <div class="partner-meta">
+      <!-- <div class="partner-logo" aria-hidden="true">SS</div> -->
+       <div class="partner-logo">
+        <img src="logo/partners/sitoshop.svg" alt="Sito Shop logo">
+       </div>
+        <div class="partner-meta">
         <div class="partner-name">Sito Shop</div>
         <div class="partner-name-fa">سیتو شاپ</div>
       </div>
     </div>
     <div class="partner-card reveal reveal-delay-3">
-      <div class="partner-logo" aria-hidden="true">A</div>
+      <!-- <div class="partner-logo" aria-hidden="true">SS</div> -->
+       <div class="partner-logo">
+        <img src="logo/partners/aramesh.svg" alt="Aramesh logo">
+       </div>
       <div class="partner-meta">
         <div class="partner-name">Aramesh</div>
-        <div class="partner-name-fa">آرامش</div>
+        <div class="partner-name-fa">گلخانه آرامش</div>
       </div>
     </div>
   </div>

@@ -1742,6 +1742,10 @@
      page even when they start a touch on a slider. The hidden
      <input type="range"> is kept only for keyboard accessibility. */
   function initSlider(container, rangeEl, afterEl, lineEl, handleEl) {
+    // Defensive: a .ba-card without an "after" pane (e.g. the closing CTA
+    // card introduced in PR #3) is not a slider — skip silently.
+    if (!container || !afterEl) return () => {};
+
     let dragging = false;
     let pending  = false;     // pointer is down on touch but intent not yet decided
     let startX = 0, startY = 0;
@@ -1845,8 +1849,10 @@
     document.getElementById('baMainHandle')
   );
 
-  /* Card sliders */
-  document.querySelectorAll('.ba-card').forEach(card => {
+  /* Card sliders — the :not selector also pre-filters the closing CTA
+     card from PR #3; the null-guard inside initSlider is a second line
+     of defence in case other non-slider .ba-card variants appear. */
+  document.querySelectorAll('.ba-card:not(.ba-card-cta)').forEach(card => {
     initSlider(
       card,
       card.querySelector('.ba-card-range'),

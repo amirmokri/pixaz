@@ -927,10 +927,14 @@
     .partners-section .sec-tag { color: rgba(255,255,255,0.4); }
     .partners-section .sec-sub { color: rgba(255,255,255,0.5); }
 
+    /* Height-normalised logo plates: every logo (or wordmark placeholder)
+       is rendered into a fixed-height invisible slot, so the eye sees a
+       consistent visual size regardless of each brand's aspect ratio.
+       Mirrors how Stripe / Vercel / Linear lay out their partner strips. */
     .partners-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -939,13 +943,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 22px;
-      padding: 44px 28px 36px;
+      justify-content: center;
+      gap: 16px;
+      padding: 32px 24px 28px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
       transition: background var(--transition), border-color var(--transition), transform var(--transition);
       overflow: hidden;
+      text-decoration: none;
+      color: inherit;
     }
     .partner-card::before {
       content: '';
@@ -960,50 +967,57 @@
     .partner-card:hover {
       background: rgba(255,255,255,0.06);
       border-color: rgba(255,255,255,0.18);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
     .partner-card:hover::before { transform: scaleX(1); }
 
+    /* The plate: a flexible rectangle that normalises every logo to the
+       same visual height. Width is free, so wordmarks, monograms and
+       square logos all read as the same "size" to the eye. */
     .partner-logo {
-      width: 96px; height: 96px;
-      border-radius: 50%;
-      background: var(--white);
-      color: var(--black);
+      width: 100%;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 4px 8px;
+    }
+    .partner-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);  /* monochrome → white on dark card */
+      opacity: 0.78;
+      transition: opacity var(--transition);
+    }
+    .partner-card:hover .partner-logo img { opacity: 1; }
+    /* Per-card escape hatch: add .partner-logo--color to keep brand colours. */
+    .partner-logo--color img { filter: none; opacity: 1; }
+
+    /* Text wordmark used until a real logo file is dropped in.
+       Sized to match the plate so swapping <span> for <img> requires
+       zero layout changes. */
+    .partner-wordmark {
       font-family: var(--font-en);
-      font-weight: 900;
-      font-size: 30px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(0,0,0,0.06);
-      position: relative;
-    }
-    .partner-logo::after {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.08);
-      pointer-events: none;
-    }
-    .partner-meta {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .partner-name {
-      font-family: var(--font-en);
-      font-size: 17px;
+      font-size: 22px;
       font-weight: 800;
-      color: var(--white);
-      letter-spacing: 0.4px;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: -0.3px;
+      line-height: 1;
+      text-align: center;
+      transition: color var(--transition);
+      white-space: nowrap;
     }
+    .partner-card:hover .partner-wordmark { color: var(--white); }
+
     .partner-name-fa {
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.45);
       font-weight: 500;
+      letter-spacing: 0.3px;
+      text-align: center;
     }
 
     /* ─── PRICING ─────────────────────────────────────────── */
@@ -1273,7 +1287,7 @@
       .pricing-grid { grid-template-columns: repeat(2, 1fr); }
       .ba-grid { grid-template-columns: repeat(3, 1fr); }
       .portfolio-grid { columns: 3; }
-      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .partners-grid { gap: 14px; }
     }
     @media (max-width: 1100px) {
       .footer-top { grid-template-columns: 1fr 1fr; }
@@ -1297,9 +1311,9 @@
       .ba-grid { grid-template-columns: repeat(2, 1fr); }
       .portfolio-grid { columns: 2; }
       .pricing-grid { grid-template-columns: 1fr; }
-      .partners-grid { grid-template-columns: repeat(2, 1fr); }
-      .partner-card { padding: 32px 16px 28px; }
-      .partner-logo { width: 80px; height: 80px; font-size: 26px; }
+      .partner-card { padding: 26px 16px 22px; gap: 14px; }
+      .partner-logo { height: 52px; }
+      .partner-wordmark { font-size: 19px; }
       .qr-section { grid-template-columns: 1fr; gap: 48px; padding: 72px 24px; }
       .footer-main { padding: 56px 24px 40px; }
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
@@ -1726,27 +1740,31 @@
     <h2 class="sec-heading">برندهایی که با ما همراه‌اند</h2>
     <p class="sec-sub" style="margin:0 auto">افتخار ما همکاری با کسب‌وکارهایی است که به کیفیت بصری برندشان اهمیت می‌دهند.</p>
   </div>
+  <!-- To swap in a real logo, replace the <span class="partner-wordmark">…</span>
+       inside the .partner-logo slot with:
+         <img src="logo/partners/<file>.svg" alt="<Brand>">
+       The plate's CSS (.partner-logo) keeps the same visual height for
+       every logo regardless of aspect ratio, so layout will not shift.
+       Add the .partner-logo--color modifier if a particular logo should
+       keep its brand colour instead of being rendered in monochrome. -->
   <div class="partners-grid">
     <div class="partner-card reveal reveal-delay-1">
-      <div class="partner-logo" aria-hidden="true">MT</div>
-      <div class="partner-meta">
-        <div class="partner-name">Mostafa Tailor</div>
-        <div class="partner-name-fa">مصطفی تیلور</div>
+      <div class="partner-logo">
+        <span class="partner-wordmark">Mostafa Tailor</span>
       </div>
+      <div class="partner-name-fa">مصطفی تیلور</div>
     </div>
     <div class="partner-card reveal reveal-delay-2">
-      <div class="partner-logo" aria-hidden="true">SS</div>
-      <div class="partner-meta">
-        <div class="partner-name">Sito Shop</div>
-        <div class="partner-name-fa">سیتو شاپ</div>
+      <div class="partner-logo">
+        <span class="partner-wordmark">Sito Shop</span>
       </div>
+      <div class="partner-name-fa">سیتو شاپ</div>
     </div>
     <div class="partner-card reveal reveal-delay-3">
-      <div class="partner-logo" aria-hidden="true">A</div>
-      <div class="partner-meta">
-        <div class="partner-name">Aramesh</div>
-        <div class="partner-name-fa">آرامش</div>
+      <div class="partner-logo">
+        <span class="partner-wordmark">Aramesh</span>
       </div>
+      <div class="partner-name-fa">آرامش</div>
     </div>
   </div>
 </section>

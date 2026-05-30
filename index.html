@@ -655,6 +655,93 @@
       background: rgba(255,255,255,0.92);
       color: var(--black);
     }
+    /* Closing CTA card at the end of the comparison grid */
+    .ba-card.ba-card-cta {
+      background: var(--black);
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      overflow: hidden;
+    }
+    .ba-card.ba-card-cta::before {
+      content: '';
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.10), transparent 55%);
+      pointer-events: none;
+    }
+    .ba-card.ba-card-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity: 0.18;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .ba-card.ba-card-cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .ba-card.ba-card-cta:hover::after { opacity: 0.32; }
+    .ba-cta-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 28px 22px;
+    }
+    .ba-cta-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 900;
+      transition: transform var(--transition);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .ba-card.ba-card-cta:hover .ba-cta-icon { transform: scale(1.08) rotate(-8deg); }
+    .ba-cta-title {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+    .ba-cta-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 200px;
+    }
+    .ba-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: background var(--transition), color var(--transition);
+    }
+    .ba-card.ba-card-cta:hover .ba-cta-pill {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
     /* Idle pulse on each card's handle to advertise interactivity.
        Stops permanently the moment the visitor first touches the card. */
     @keyframes baHandlePulse {
@@ -1479,6 +1566,14 @@
       <span class="ba-card-tag ba-card-tag-before">قبل</span>
       <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
+    <a href="#contact" class="ba-card ba-card-cta reveal reveal-delay-4" aria-label="شروع همکاری با پیکساز">
+      <div class="ba-cta-inner">
+        <div class="ba-cta-icon" aria-hidden="true">→</div>
+        <div class="ba-cta-title">محصول شما؟</div>
+        <div class="ba-cta-sub">نمونه بعدی روی این تابلو، تصویر برند شماست.</div>
+        <span class="ba-cta-pill">شروع همکاری ←</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1951,9 +2046,9 @@
     document.getElementById('baMainHandle')
   );
 
-  /* Card sliders — the :not selector also pre-filters the closing CTA
-     card from PR #3; the null-guard inside initSlider is a second line
-     of defence in case other non-slider .ba-card variants appear. */
+  /* Card sliders — the :not selector pre-filters the closing CTA card
+     introduced below; initSlider also has its own null-guard so any
+     other non-slider .ba-card variants would still be safe. */
   document.querySelectorAll('.ba-card:not(.ba-card-cta)').forEach(card => {
     initSlider(
       card,

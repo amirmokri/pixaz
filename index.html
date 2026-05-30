@@ -269,6 +269,9 @@
       box-shadow: 0 24px 60px rgba(0,0,0,0.15);
       aspect-ratio: 1 / 1;
       cursor: ew-resize;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .hero-ba-before, .hero-ba-after {
       position: absolute;
@@ -447,6 +450,9 @@
       aspect-ratio: 1 / 1;
       cursor: ew-resize;
       box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .ba-main-before, .ba-main-after {
       position: absolute;
@@ -536,6 +542,9 @@
       aspect-ratio: 1 / 1;
       cursor: ew-resize;
       box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .ba-card-before, .ba-card-after {
       position: absolute;
@@ -1726,11 +1735,18 @@
   }
 
   /* ── Before/After sliders (generic) ──
-     Uses pointer events on the container so the handle always tracks the
-     real cursor position, independent of the page's RTL direction. The
-     hidden <input type="range"> is kept only for keyboard accessibility. */
+     Pointer-event driven so the handle always tracks the real cursor
+     regardless of the page's RTL direction. On touch, "drag" mode is
+     only entered after horizontal intent is detected — vertical pans
+     fall through to the browser so the visitor can always scroll the
+     page even when they start a touch on a slider. The hidden
+     <input type="range"> is kept only for keyboard accessibility. */
   function initSlider(container, rangeEl, afterEl, lineEl, handleEl) {
     let dragging = false;
+    let pending  = false;     // pointer is down on touch but intent not yet decided
+    let startX = 0, startY = 0;
+    let activePointerId = null;
+    const TOUCH_INTENT_PX = 6; // movement threshold before we lock direction
 
     function update(val) {
       const v = Math.max(0, Math.min(100, Number(val)));
@@ -1746,19 +1762,50 @@
       return (x / rect.width) * 100;
     }
 
-    container.addEventListener('pointerdown', (e) => {
-      dragging = true;
+    function tryCapture(e) {
       try { container.setPointerCapture && container.setPointerCapture(e.pointerId); } catch (_) {}
-      update(pctFromEvent(e));
-      e.preventDefault();
+    }
+
+    container.addEventListener('pointerdown', (e) => {
+      activePointerId = e.pointerId;
+      if (e.pointerType === 'mouse') {
+        // Desktop: immediate click-and-drag. preventDefault only suppresses text
+        // selection — it does not affect scrolling because mice don't pan.
+        dragging = true;
+        tryCapture(e);
+        update(pctFromEvent(e));
+        e.preventDefault();
+      } else {
+        // Touch / pen: defer until the visitor shows horizontal intent,
+        // so vertical scrolling continues to work normally.
+        pending = true;
+        startX  = e.clientX;
+        startY  = e.clientY;
+      }
     });
 
     container.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      update(pctFromEvent(e));
+      if (dragging) {
+        update(pctFromEvent(e));
+        return;
+      }
+      if (!pending || e.pointerId !== activePointerId) return;
+      const dx = Math.abs(e.clientX - startX);
+      const dy = Math.abs(e.clientY - startY);
+      if (dx >= TOUCH_INTENT_PX && dx > dy) {
+        // Horizontal intent confirmed — take over the pointer
+        pending  = false;
+        dragging = true;
+        tryCapture(e);
+        update(pctFromEvent(e));
+      } else if (dy >= TOUCH_INTENT_PX) {
+        // Vertical intent — let the browser scroll the page
+        pending = false;
+      }
     });
 
     const endDrag = (e) => {
+      pending = false;
       if (!dragging) return;
       dragging = false;
       if (e && container.releasePointerCapture && e.pointerId !== undefined) {

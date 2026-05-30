@@ -90,6 +90,7 @@
       position: fixed; top: 37px; left: 0; right: 0; z-index: 100;
       padding: 22px 60px;
       display: flex; align-items: center; justify-content: space-between;
+      direction: ltr;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
     }
     nav.scrolled {
@@ -99,9 +100,9 @@
       box-shadow: 0 1px 0 var(--gray-200), 0 8px 32px rgba(0,0,0,0.04);
       padding: 16px 60px;
     }
-    .nav-brand { display: flex; align-items: center; gap: 8px; }
+    .nav-brand { display: flex; align-items: center; gap: 8px; direction: ltr; }
     .nav-brand img { height: 44px; }
-    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
     .nav-brand-fa { font-size: 17px; font-weight: 800; color: var(--black); }
     .nav-brand-en {
       font-size: 10px; font-weight: 600; color: var(--gray-400);

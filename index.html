@@ -613,6 +613,32 @@
       cursor: ew-resize;
       z-index: 7;
     }
+    /* Small corner pills so each card reads as a comparison at a glance */
+    .ba-card-tag {
+      position: absolute;
+      bottom: 10px;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 4px 11px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+      pointer-events: none;
+      z-index: 5;
+      font-family: var(--font-fa);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      line-height: 1.4;
+    }
+    .ba-card-tag-before {
+      right: 10px;
+      background: rgba(0,0,0,0.62);
+      color: #fff;
+    }
+    .ba-card-tag-after {
+      left: 10px;
+      background: rgba(255,255,255,0.92);
+      color: var(--black);
+    }
 
     /* ─── SERVICES ────────────────────────────────────────── */
     .services-grid {
@@ -1270,6 +1296,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-2">
       <div class="ba-card-before"><img src="pre/model8.webp" alt="قبل"></div>
@@ -1277,6 +1305,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model3.jpeg" alt="قبل"></div>
@@ -1284,6 +1314,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-4">
       <div class="ba-card-before"><img src="pre/model4.jpeg" alt="قبل"></div>
@@ -1291,6 +1323,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-1">
       <div class="ba-card-before"><img src="pre/model6.webp" alt="قبل"></div>
@@ -1298,6 +1332,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-2">
       <div class="ba-card-before"><img src="pre/model7.webp" alt="قبل"></div>
@@ -1305,6 +1341,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model5.webp" alt="قبل"></div>
@@ -1312,6 +1350,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model9.jpeg" alt="قبل"></div>
@@ -1319,6 +1359,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
   </div>
 </section>

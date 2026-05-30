@@ -90,6 +90,7 @@
       position: fixed; top: 37px; left: 0; right: 0; z-index: 100;
       padding: 22px 60px;
       display: flex; align-items: center; justify-content: space-between;
+      direction: ltr;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
     }
     nav.scrolled {
@@ -99,9 +100,9 @@
       box-shadow: 0 1px 0 var(--gray-200), 0 8px 32px rgba(0,0,0,0.04);
       padding: 16px 60px;
     }
-    .nav-brand { display: flex; align-items: center; gap: 8px; }
+    .nav-brand { display: flex; align-items: center; gap: 8px; direction: ltr; }
     .nav-brand img { height: 44px; }
-    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
     .nav-brand-fa { font-size: 17px; font-weight: 800; color: var(--black); }
     .nav-brand-en {
       font-size: 10px; font-weight: 600; color: var(--gray-400);
@@ -268,6 +269,9 @@
       box-shadow: 0 24px 60px rgba(0,0,0,0.15);
       aspect-ratio: 1 / 1;
       cursor: ew-resize;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .hero-ba-before, .hero-ba-after {
       position: absolute;
@@ -315,6 +319,8 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 12;
+      direction: ltr;
+      pointer-events: none;
     }
     .ba-label-pill {
       position: absolute;
@@ -444,6 +450,9 @@
       aspect-ratio: 1 / 1;
       cursor: ew-resize;
       box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .ba-main-before, .ba-main-after {
       position: absolute;
@@ -485,6 +494,8 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 7;
+      direction: ltr;
+      pointer-events: none;
     }
     .ba-main-labels {
       display: flex;
@@ -512,9 +523,48 @@
       text-align: center;
       margin-top: 16px;
       font-size: 12px;
-      color: var(--gray-400);
+      color: var(--gray-500);
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .ba-instruction-fa {
+      font-family: var(--font-fa);
+      font-weight: 600;
+    }
+    .ba-instruction-en {
       font-family: var(--font-en);
-      letter-spacing: 1px;
+      font-size: 10.5px;
+      color: var(--gray-400);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    /* Section-header chips that anchor the Samples section in scale */
+    .ba-header-chips {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .ba-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--gray-700);
+    }
+    .ba-chip-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--black);
     }
 
     /* ─── BEFORE/AFTER CARDS GRID ─────────────────────────── */
@@ -531,6 +581,9 @@
       aspect-ratio: 1 / 1;
       cursor: ew-resize;
       box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
     }
     .ba-card-before, .ba-card-after {
       position: absolute;
@@ -573,6 +626,134 @@
       opacity: 0;
       cursor: ew-resize;
       z-index: 7;
+      direction: ltr;
+      pointer-events: none;
+    }
+    /* Small corner pills so each card reads as a comparison at a glance */
+    .ba-card-tag {
+      position: absolute;
+      bottom: 10px;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 4px 11px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+      pointer-events: none;
+      z-index: 5;
+      font-family: var(--font-fa);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      line-height: 1.4;
+    }
+    .ba-card-tag-before {
+      right: 10px;
+      background: rgba(0,0,0,0.62);
+      color: #fff;
+    }
+    .ba-card-tag-after {
+      left: 10px;
+      background: rgba(255,255,255,0.92);
+      color: var(--black);
+    }
+    /* Closing CTA card at the end of the comparison grid */
+    .ba-card.ba-card-cta {
+      background: var(--black);
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      overflow: hidden;
+    }
+    .ba-card.ba-card-cta::before {
+      content: '';
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.10), transparent 55%);
+      pointer-events: none;
+    }
+    .ba-card.ba-card-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity: 0.18;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .ba-card.ba-card-cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .ba-card.ba-card-cta:hover::after { opacity: 0.32; }
+    .ba-cta-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 28px 22px;
+    }
+    .ba-cta-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 900;
+      transition: transform var(--transition);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .ba-card.ba-card-cta:hover .ba-cta-icon { transform: scale(1.08) rotate(-8deg); }
+    .ba-cta-title {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+    .ba-cta-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 200px;
+    }
+    .ba-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: background var(--transition), color var(--transition);
+    }
+    .ba-card.ba-card-cta:hover .ba-cta-pill {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    /* Idle pulse on each card's handle to advertise interactivity.
+       Stops permanently the moment the visitor first touches the card. */
+    @keyframes baHandlePulse {
+      0%   { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0   rgba(255,255,255,0.55); }
+      70%  { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 12px rgba(255,255,255,0);    }
+      100% { box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 0 0 0   rgba(255,255,255,0);    }
+    }
+    .ba-card:not(.interacted) .ba-card-handle {
+      animation: baHandlePulse 2.6s ease-out 1.2s infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ba-card:not(.interacted) .ba-card-handle { animation: none; }
     }
 
     /* ─── SERVICES ────────────────────────────────────────── */
@@ -739,6 +920,104 @@
       letter-spacing: 1px;
       font-family: var(--font-en);
       align-self: flex-start;
+    }
+
+    /* ─── PARTNERS ────────────────────────────────────────── */
+    .partners-section { background: var(--black); color: var(--white); }
+    .partners-section .sec-tag { color: rgba(255,255,255,0.4); }
+    .partners-section .sec-sub { color: rgba(255,255,255,0.5); }
+
+    /* Height-normalised logo plates: every logo (or wordmark placeholder)
+       is rendered into a fixed-height invisible slot, so the eye sees a
+       consistent visual size regardless of each brand's aspect ratio.
+       Mirrors how Stripe / Vercel / Linear lay out their partner strips. */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .partner-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 32px 24px 28px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+    }
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--transition);
+    }
+    .partner-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-3px);
+    }
+    .partner-card:hover::before { transform: scaleX(1); }
+
+    /* The plate: a flexible rectangle that normalises every logo to the
+       same visual height. Width is free, so wordmarks, monograms and
+       square logos all read as the same "size" to the eye. */
+    .partner-logo {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 8px;
+    }
+    .partner-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);  /* monochrome → white on dark card */
+      opacity: 0.78;
+      transition: opacity var(--transition);
+    }
+    .partner-card:hover .partner-logo img { opacity: 1; }
+    /* Per-card escape hatch: add .partner-logo--color to keep brand colours. */
+    .partner-logo--color img { filter: none; opacity: 1; }
+
+    /* Text wordmark used until a real logo file is dropped in.
+       Sized to match the plate so swapping <span> for <img> requires
+       zero layout changes. */
+    .partner-wordmark {
+      font-family: var(--font-en);
+      font-size: 22px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: -0.3px;
+      line-height: 1;
+      text-align: center;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .partner-card:hover .partner-wordmark { color: var(--white); }
+
+    .partner-name-fa {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      text-align: center;
     }
 
     /* ─── PRICING ─────────────────────────────────────────── */
@@ -1008,6 +1287,7 @@
       .pricing-grid { grid-template-columns: repeat(2, 1fr); }
       .ba-grid { grid-template-columns: repeat(3, 1fr); }
       .portfolio-grid { columns: 3; }
+      .partners-grid { gap: 14px; }
     }
     @media (max-width: 1100px) {
       .footer-top { grid-template-columns: 1fr 1fr; }
@@ -1031,6 +1311,9 @@
       .ba-grid { grid-template-columns: repeat(2, 1fr); }
       .portfolio-grid { columns: 2; }
       .pricing-grid { grid-template-columns: 1fr; }
+      .partner-card { padding: 26px 16px 22px; gap: 14px; }
+      .partner-logo { height: 52px; }
+      .partner-wordmark { font-size: 19px; }
       .qr-section { grid-template-columns: 1fr; gap: 48px; padding: 72px 24px; }
       .footer-main { padding: 56px 24px 40px; }
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
@@ -1194,6 +1477,11 @@
     <div class="sec-tag">Before / After</div>
     <h2 class="sec-heading">از عکس خام تا تصویر حرفه ای</h2>
     <p class="sec-sub">با پیکساز، همین عکسی که الان داری کافیه. بقیه کار با ماست.</p>
+    <div class="ba-header-chips">
+      <span class="ba-chip"><span class="ba-chip-dot"></span> +۵۰ نمونه واقعی</span>
+      <span class="ba-chip"><span class="ba-chip-dot"></span> تحویل تا ۴۸ ساعت</span>
+      <span class="ba-chip"><span class="ba-chip-dot"></span> اولین مشاوره رایگان</span>
+    </div>
   </div>
 
   <div class="ba-main-wrapper reveal">
@@ -1212,7 +1500,10 @@
       <div class="ba-main-label">عکس اصلی محصول (قبل)</div>
       <div class="ba-main-label after-label">خروجی پیکساز AI (بعد)</div>
     </div>
-    <div class="ba-instruction">← drag to compare →</div>
+    <div class="ba-instruction">
+      <span class="ba-instruction-fa">برای مقایسه، دستگیره را بکشید</span>
+      <span class="ba-instruction-en">↔ drag the handle to compare</span>
+    </div>
   </div>
 
   <!-- All pairs grid -->
@@ -1223,6 +1514,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-2">
       <div class="ba-card-before"><img src="pre/model8.webp" alt="قبل"></div>
@@ -1230,6 +1523,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model3.jpeg" alt="قبل"></div>
@@ -1237,6 +1532,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-4">
       <div class="ba-card-before"><img src="pre/model4.jpeg" alt="قبل"></div>
@@ -1244,6 +1541,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-1">
       <div class="ba-card-before"><img src="pre/model6.webp" alt="قبل"></div>
@@ -1251,6 +1550,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-2">
       <div class="ba-card-before"><img src="pre/model7.webp" alt="قبل"></div>
@@ -1258,6 +1559,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model5.webp" alt="قبل"></div>
@@ -1265,6 +1568,8 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
     <div class="ba-card reveal reveal-delay-3">
       <div class="ba-card-before"><img src="pre/model9.jpeg" alt="قبل"></div>
@@ -1272,7 +1577,17 @@
       <div class="ba-card-line"></div>
       <div class="ba-card-handle">⟺</div>
       <input type="range" min="0" max="100" value="50" class="ba-card-range">
+      <span class="ba-card-tag ba-card-tag-before">قبل</span>
+      <span class="ba-card-tag ba-card-tag-after">بعد</span>
     </div>
+    <a href="#contact" class="ba-card ba-card-cta reveal reveal-delay-4" aria-label="شروع همکاری با پیکساز">
+      <div class="ba-cta-inner">
+        <div class="ba-cta-icon" aria-hidden="true">→</div>
+        <div class="ba-cta-title">محصول شما؟</div>
+        <div class="ba-cta-sub">نمونه بعدی روی این تابلو، تصویر برند شماست.</div>
+        <span class="ba-cta-pill">شروع همکاری ←</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1362,7 +1677,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Mostafa Tailor</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-1">
@@ -1370,7 +1684,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Sito Shop</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-2">
@@ -1378,7 +1691,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Mostafa Tailor</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-3">
@@ -1386,7 +1698,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Sito Shop</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal">
@@ -1394,7 +1705,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Sito Shop</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-1">
@@ -1402,7 +1712,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Aramesh</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-2">
@@ -1410,7 +1719,6 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Mostafa Tailor</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
     </div>
     <div class="portfolio-item reveal reveal-delay-2">
@@ -1418,8 +1726,45 @@
 
       <div class="portfolio-overlay">
         <span class="portfolio-client-label">Sito Shop</span>
-        <span class="portfolio-tag">✦ AI GENERATED</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PARTNERS
+══════════════════════════════════════════ -->
+<section class="section partners-section" id="partners">
+  <div class="sec-header reveal" style="text-align:center; margin:0 auto 60px; max-width:600px;">
+    <div class="sec-tag">Our Partners</div>
+    <h2 class="sec-heading">برندهایی که با ما همراه‌اند</h2>
+    <p class="sec-sub" style="margin:0 auto">افتخار ما همکاری با کسب‌وکارهایی است که به کیفیت بصری برندشان اهمیت می‌دهند.</p>
+  </div>
+  <!-- To swap in a real logo, replace the <span class="partner-wordmark">…</span>
+       inside the .partner-logo slot with:
+         <img src="logo/partners/<file>.svg" alt="<Brand>">
+       The plate's CSS (.partner-logo) keeps the same visual height for
+       every logo regardless of aspect ratio, so layout will not shift.
+       Add the .partner-logo--color modifier if a particular logo should
+       keep its brand colour instead of being rendered in monochrome. -->
+  <div class="partners-grid">
+    <div class="partner-card reveal reveal-delay-1">
+      <div class="partner-logo">
+        <span class="partner-wordmark">Mostafa Tailor</span>
+      </div>
+      <div class="partner-name-fa">مصطفی تیلور</div>
+    </div>
+    <div class="partner-card reveal reveal-delay-2">
+      <div class="partner-logo">
+        <span class="partner-wordmark">Sito Shop</span>
+      </div>
+      <div class="partner-name-fa">سیتو شاپ</div>
+    </div>
+    <div class="partner-card reveal reveal-delay-3">
+      <div class="partner-logo">
+        <span class="partner-wordmark">Aramesh</span>
+      </div>
+      <div class="partner-name-fa">آرامش</div>
     </div>
   </div>
 </section>
@@ -1604,70 +1949,190 @@
     document.body.style.overflow = '';
   }
 
-  /* ── Before/After sliders (generic) ── */
-  function initSlider(rangeEl, afterEl, lineEl, handleEl) {
+  /* ── Before/After sliders (generic) ──
+     Pointer-event driven so the handle always tracks the real cursor
+     regardless of the page's RTL direction. On touch, "drag" mode is
+     only entered after horizontal intent is detected — vertical pans
+     fall through to the browser so the visitor can always scroll the
+     page even when they start a touch on a slider. The hidden
+     <input type="range"> is kept only for keyboard accessibility. */
+  function initSlider(container, rangeEl, afterEl, lineEl, handleEl) {
+    // Defensive: a .ba-card without an "after" pane (e.g. the closing CTA
+    // card introduced in PR #3) is not a slider — skip silently.
+    if (!container || !afterEl) return () => {};
+
+    let dragging = false;
+    let pending  = false;     // pointer is down on touch but intent not yet decided
+    let startX = 0, startY = 0;
+    let activePointerId = null;
+    const TOUCH_INTENT_PX = 6; // movement threshold before we lock direction
+
     function update(val) {
-      afterEl.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
-      if (lineEl)   lineEl.style.left = val + '%';
-      if (handleEl) handleEl.style.left = val + '%';
+      const v = Math.max(0, Math.min(100, Number(val)));
+      afterEl.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+      if (lineEl)   lineEl.style.left   = v + '%';
+      if (handleEl) handleEl.style.left = v + '%';
+      if (rangeEl && Number(rangeEl.value) !== v) rangeEl.value = v;
     }
-    rangeEl.addEventListener('input', () => update(rangeEl.value));
-    // Touch support
-    const container = rangeEl.closest('[class*="ba-"]') || rangeEl.parentElement;
-    container.addEventListener('touchmove', (e) => {
-      e.preventDefault();
+
+    function pctFromEvent(e) {
       const rect = container.getBoundingClientRect();
-      const x = e.touches[0].clientX - rect.left;
-      const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
-      rangeEl.value = pct;
-      update(pct);
-    }, { passive: false });
+      const x = e.clientX - rect.left;
+      return (x / rect.width) * 100;
+    }
+
+    function tryCapture(e) {
+      try { container.setPointerCapture && container.setPointerCapture(e.pointerId); } catch (_) {}
+    }
+
+    container.addEventListener('pointerdown', (e) => {
+      activePointerId = e.pointerId;
+      if (e.pointerType === 'mouse') {
+        // Desktop: immediate click-and-drag. preventDefault only suppresses text
+        // selection — it does not affect scrolling because mice don't pan.
+        dragging = true;
+        tryCapture(e);
+        update(pctFromEvent(e));
+        e.preventDefault();
+      } else {
+        // Touch / pen: defer until the visitor shows horizontal intent,
+        // so vertical scrolling continues to work normally.
+        pending = true;
+        startX  = e.clientX;
+        startY  = e.clientY;
+      }
+    });
+
+    container.addEventListener('pointermove', (e) => {
+      if (dragging) {
+        update(pctFromEvent(e));
+        return;
+      }
+      if (!pending || e.pointerId !== activePointerId) return;
+      const dx = Math.abs(e.clientX - startX);
+      const dy = Math.abs(e.clientY - startY);
+      if (dx >= TOUCH_INTENT_PX && dx > dy) {
+        // Horizontal intent confirmed — take over the pointer
+        pending  = false;
+        dragging = true;
+        tryCapture(e);
+        update(pctFromEvent(e));
+      } else if (dy >= TOUCH_INTENT_PX) {
+        // Vertical intent — let the browser scroll the page
+        pending = false;
+      }
+    });
+
+    const endDrag = (e) => {
+      pending = false;
+      if (!dragging) return;
+      dragging = false;
+      if (e && container.releasePointerCapture && e.pointerId !== undefined) {
+        try { container.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
+    };
+    container.addEventListener('pointerup', endDrag);
+    container.addEventListener('pointercancel', endDrag);
+    container.addEventListener('pointerleave', (e) => { if (dragging && e.buttons === 0) endDrag(e); });
+
+    if (rangeEl) {
+      rangeEl.addEventListener('input', () => update(rangeEl.value));
+    }
+
     return update;
   }
 
   /* Hero slider */
+  const heroBaEl = document.getElementById('heroBa');
   const heroUpdate = initSlider(
+    heroBaEl,
     document.getElementById('heroBaRange'),
     document.getElementById('heroBaAfter'),
     document.getElementById('heroBaLine'),
     document.getElementById('heroBaHandle')
   );
+  // Stop the hero auto-animation as soon as the visitor interacts with it
+  let heroUserTouched = false;
+  heroBaEl.addEventListener('pointerdown', () => { heroUserTouched = true; });
 
   /* Main slider */
   const mainUpdate = initSlider(
+    document.getElementById('baMain'),
     document.getElementById('baMainRange'),
     document.getElementById('baMainAfter'),
     document.getElementById('baMainLine'),
     document.getElementById('baMainHandle')
   );
 
-  /* Card sliders */
-  document.querySelectorAll('.ba-card').forEach(card => {
-    const range  = card.querySelector('.ba-card-range');
-    const after  = card.querySelector('.ba-card-after');
-    const line   = card.querySelector('.ba-card-line');
-    const handle = card.querySelector('.ba-card-handle');
-    function update(val) {
-      after.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
-      line.style.left = val + '%';
-      handle.style.left = val + '%';
-      handle.style.transform = `translate(-50%, -50%)`;
-    }
-    range.addEventListener('input', () => update(range.value));
-    card.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      const rect = card.getBoundingClientRect();
-      const x = e.touches[0].clientX - rect.left;
-      const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
-      range.value = pct;
-      update(pct);
-    }, { passive: false });
+  /* Card sliders — the :not selector pre-filters the closing CTA card
+     introduced below; initSlider also has its own null-guard so any
+     other non-slider .ba-card variants would still be safe. */
+  document.querySelectorAll('.ba-card:not(.ba-card-cta)').forEach(card => {
+    initSlider(
+      card,
+      card.querySelector('.ba-card-range'),
+      card.querySelector('.ba-card-after'),
+      card.querySelector('.ba-card-line'),
+      card.querySelector('.ba-card-handle')
+    );
   });
+
+  /* ── Samples cards: idle-pulse stop + one-shot auto-sweep on scroll-in ──
+     This pass is intentionally additive so it cooperates with whichever
+     slider implementation is active (range-driven or pointer-driven). */
+  (function enhanceBaCards() {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.ba-card').forEach(card => {
+      const range  = card.querySelector('.ba-card-range');
+      const after  = card.querySelector('.ba-card-after');
+      const line   = card.querySelector('.ba-card-line');
+      const handle = card.querySelector('.ba-card-handle');
+      if (!after) return;
+
+      function setPct(v) {
+        const pct = Math.max(0, Math.min(100, v));
+        after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        if (line)   line.style.left   = pct + '%';
+        if (handle) handle.style.left = pct + '%';
+        if (range)  range.value = pct;
+      }
+
+      const markInteracted = () => card.classList.add('interacted');
+      card.addEventListener('pointerdown', markInteracted, { once: true });
+      card.addEventListener('touchstart',  markInteracted, { once: true, passive: true });
+      if (range) range.addEventListener('input', markInteracted, { once: true });
+
+      if (reduceMotion) return;
+
+      let played = false;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting || played) return;
+          if (card.classList.contains('interacted')) { obs.disconnect(); return; }
+          played = true;
+          obs.disconnect();
+          const t0 = performance.now();
+          const duration = 1800;
+          (function frame(now) {
+            if (card.classList.contains('interacted')) { setPct(50); return; }
+            const t = Math.min(1, (now - t0) / duration);
+            // single smooth sweep: 50 → 72 → 50 → 28 → 50
+            setPct(50 + Math.sin(t * Math.PI * 2) * 22);
+            if (t < 1) requestAnimationFrame(frame);
+            else setPct(50);
+          })(t0);
+        });
+      }, { threshold: 0.45 });
+      obs.observe(card);
+    });
+  })();
 
   /* Auto-animate hero slider on load */
   let heroAnim = 0;
   let heroDir = 1;
   function animateHero() {
+    if (heroUserTouched) return;
     heroAnim += heroDir * 0.4;
     if (heroAnim >= 60) heroDir = -1;
     if (heroAnim <= 40) heroDir = 1;
@@ -1676,9 +2141,11 @@
   }
   heroAnim = 0;
   setTimeout(() => {
+    if (heroUserTouched) return;
     let target = 50;
     let current = 0;
     function intro() {
+      if (heroUserTouched) return;
       current += (target - current) * 0.06 + 0.5;
       heroUpdate(current);
       if (current < target - 0.5) requestAnimationFrame(intro);

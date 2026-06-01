@@ -86,14 +86,14 @@
     }
 
     /* ─── NAVBAR ─────────────────────────────────────────── */
-    nav {
+    #mainNav {
       position: fixed; top: 37px; left: 0; right: 0; z-index: 100;
       padding: 22px 60px;
       display: flex; align-items: center; justify-content: space-between;
       direction: ltr;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
     }
-    nav.scrolled {
+    #mainNav.scrolled {
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -137,6 +137,9 @@
       gap: 5px;
       cursor: pointer;
       padding: 4px;
+      border: none;
+      background: none;
+      -webkit-tap-highlight-color: transparent;
     }
     .nav-burger span {
       display: block;
@@ -1445,29 +1448,247 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--white);
+      inset: 0;
       z-index: 200;
       flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      background: var(--white);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .mobile-menu::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #D4D4D4 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .mobile-menu-header {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: ltr;
+      padding: 14px 20px;
+      padding-top: max(14px, env(safe-area-inset-top));
+      border-bottom: 1px solid var(--gray-200);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .mobile-menu-brand {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      direction: ltr;
+    }
+    .mobile-menu-brand img { height: 40px; }
+    .mobile-menu-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+      text-align: left;
+    }
+    .mobile-menu-brand-fa { font-size: 16px; font-weight: 800; color: var(--black); }
+    .mobile-menu-brand-en {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gray-400);
+      font-family: var(--font-en);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .mobile-close {
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 32px;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      border: 2px solid var(--gray-200);
+      background: var(--white);
+      color: var(--black);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: border-color var(--transition), transform 0.2s;
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 24px;
+    .mobile-close:hover { border-color: var(--black); transform: translateY(-1px); }
+    .mobile-menu-scroll {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 20px 16px;
+    }
+    .mobile-menu-nav {
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      z-index: auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      direction: rtl;
+      gap: 10px;
+      margin-bottom: 0;
+      list-style: none;
+    }
+    .mobile-menu-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
+      flex-shrink: 0;
+      min-height: 56px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--gray-700);
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--transition), border-color var(--transition), color var(--transition), box-shadow 0.2s;
+    }
+    .mobile-menu-nav-link:hover,
+    .mobile-menu-nav-link:active,
+    .mobile-menu-nav-link:focus-visible {
+      background: var(--gray-100);
+      border-color: var(--gray-400);
+      color: var(--black);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .mobile-menu-nav-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .mobile-menu-nav-arrow {
+      flex-shrink: 0;
+      font-size: 14px;
+      color: var(--gray-400);
+      transition: color var(--transition);
+    }
+    .mobile-menu-nav-link:hover .mobile-menu-nav-arrow,
+    .mobile-menu-nav-link:active .mobile-menu-nav-arrow,
+    .mobile-menu-nav-link:focus-visible .mobile-menu-nav-arrow {
+      color: var(--black);
+    }
+    .mobile-menu-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      flex-shrink: 0;
+      padding: 16px 24px;
+      border-radius: 14px;
+      background: var(--black);
+      color: var(--white) !important;
+      font-size: 16px;
+      font-weight: 700;
+      border: 2px solid var(--black);
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--transition), box-shadow 0.2s;
+    }
+    .mobile-menu-cta:hover,
+    .mobile-menu-cta:active,
+    .mobile-menu-cta:focus-visible {
+      background: var(--gray-900);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .mobile-menu-footer {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      padding: 16px 20px;
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
+      border-top: 1px solid var(--gray-200);
+      background: rgba(255,255,255,0.96);
+    }
+    .mobile-menu-contacts-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-400);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: var(--font-en);
+      margin-bottom: 10px;
+    }
+    .mobile-menu-contacts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .mobile-menu-contact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      color: var(--black);
+      -webkit-tap-highlight-color: transparent;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .mobile-menu-contact:hover,
+    .mobile-menu-contact:active,
+    .mobile-menu-contact:focus-visible {
+      background: var(--gray-100);
+      border-color: var(--gray-400);
+    }
+    .mobile-menu-contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gray-700);
+    }
+    .mobile-menu-contact-label {
+      display: block;
+      font-size: 11px;
+      color: var(--gray-400);
+      font-family: var(--font-en);
+    }
+    .mobile-menu-contact-value {
+      display: block;
+      font-size: 14px;
       font-weight: 700;
       color: var(--black);
     }
-    .mobile-close {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      font-size: 28px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: var(--black);
+    .mobile-menu-contact-value.ltr {
+      direction: ltr;
+      text-align: right;
     }
 
     /* ─── RESPONSIVE ────────────────────────────────────────── */
@@ -1487,11 +1708,12 @@
     @media (max-width: 800px) {
       .top-bar-inner { padding: 8px 20px; font-size: 11px; }
       .top-bar-divider { display: none; }
-      nav { top: 34px; padding: 14px 20px; }
-      nav.scrolled { padding: 12px 24px; }
+      #mainNav { top: 34px; padding: 14px 20px; }
+      #mainNav.scrolled { padding: 12px 24px; }
       .nav-brand-text { display: none; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
+      .mobile-menu { display: flex; }
       .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
       .hero-right { order: -1; }
       .hero-ba { max-height: 380px; }
@@ -1503,7 +1725,7 @@
       .portfolio-grid { columns: 2; }
       .pricing-grid { grid-template-columns: 1fr; }
       .partner-card { padding: 28px 16px 22px; gap: 14px; }
-      .partner-logo { width: 96px; height: 96px; padding: 18px; }
+      .partner-logo { width: 96px; height: 96px; padding: 5px; }
       .pf-lightbox { padding: 50px 12px 80px; }
       .pf-lightbox-prev,
       .pf-lightbox-next { width: 44px; height: 44px; font-size: 18px; }
@@ -1527,16 +1749,53 @@
 <!-- ══════════════════════════════════════════
      MOBILE MENU
 ══════════════════════════════════════════ -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
-  <a href="#portfolio" onclick="closeMobileMenu()">نمونه کارها</a>
-  <a href="#services" onclick="closeMobileMenu()">خدمات</a>
-  <a href="#process" onclick="closeMobileMenu()">فرآیند</a>
-  <!-- <a href="#pricing" onclick="closeMobileMenu()">پلن ها</a> -->
-  <a href="#contact" onclick="closeMobileMenu()" class="btn-primary">شروع همکاری</a>
-  <a href="tel:+989214049280" onclick="closeMobileMenu()">۰۹۲۱۴۰۴۹۲۸۰</a>
-  <a href="https://t.me/pixazai" onclick="closeMobileMenu()" target="_blank" rel="noopener">تلگرام</a>
-  <a href="https://ble.ir/pixaz" onclick="closeMobileMenu()" target="_blank" rel="noopener">پیام در بله</a>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <a href="#" class="mobile-menu-brand" onclick="event.preventDefault(); closeMobileMenu();">
+      <img src="logo/logo-bg-removed.png" alt="PixaZ">
+      <span class="mobile-menu-brand-text">
+        <span class="mobile-menu-brand-fa">پیکساز</span>
+        <span class="mobile-menu-brand-en">Studio</span>
+      </span>
+    </a>
+    <button type="button" class="mobile-close" onclick="closeMobileMenu()" aria-label="بستن منو">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu-scroll">
+    <nav class="mobile-menu-nav">
+      <a href="#portfolio" onclick="closeMobileMenu(false)" class="mobile-menu-nav-link">
+        <span class="mobile-menu-nav-text">نمونه کارها</span>
+        <span class="mobile-menu-nav-arrow" aria-hidden="true">←</span>
+      </a>
+      <a href="#services" onclick="closeMobileMenu(false)" class="mobile-menu-nav-link">
+        <span class="mobile-menu-nav-text">خدمات</span>
+        <span class="mobile-menu-nav-arrow" aria-hidden="true">←</span>
+      </a>
+      <a href="#process" onclick="closeMobileMenu(false)" class="mobile-menu-nav-link">
+        <span class="mobile-menu-nav-text">فرآیند</span>
+        <span class="mobile-menu-nav-arrow" aria-hidden="true">←</span>
+      </a>
+    </nav>
+    <a href="#contact" onclick="closeMobileMenu(false)" class="mobile-menu-cta">شروع همکاری</a>
+  </div>
+  <div class="mobile-menu-footer">
+    <p class="mobile-menu-contacts-label">ارتباط با ما</p>
+    <div class="mobile-menu-contacts">
+      <a href="tel:+989214049280" onclick="closeMobileMenu()" class="mobile-menu-contact">
+        <span class="mobile-menu-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.45a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l1.46-1.46a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span><span class="mobile-menu-contact-label">Phone</span><span class="mobile-menu-contact-value">۰۹۲۱۴۰۴۹۲۸۰</span></span>
+      </a>
+      <a href="https://t.me/pixazai" onclick="closeMobileMenu()" target="_blank" rel="noopener" class="mobile-menu-contact">
+        <span class="mobile-menu-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
+        <span><span class="mobile-menu-contact-label">Telegram</span><span class="mobile-menu-contact-value ltr">t.me/pixazai</span></span>
+      </a>
+      <a href="https://ble.ir/pixaz" onclick="closeMobileMenu()" target="_blank" rel="noopener" class="mobile-menu-contact">
+        <span class="mobile-menu-contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"/></svg></span>
+        <span><span class="mobile-menu-contact-label">Bale</span><span class="mobile-menu-contact-value ltr">ble.ir/pixaz</span></span>
+      </a>
+    </div>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -1571,9 +1830,9 @@
     <!-- <li><a href="#pricing">پلن ها</a></li> -->
     <li><a href="#contact" class="nav-cta">شروع همکاری</a></li>
   </ul>
-  <div class="nav-burger" onclick="openMobileMenu()" aria-label="منو">
+  <button type="button" class="nav-burger" onclick="openMobileMenu()" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -2211,14 +2470,45 @@
   });
 
   /* ── Mobile menu ── */
+  const mobileMenu = document.getElementById('mobileMenu');
+  const navBurger = document.querySelector('.nav-burger');
+  let mobileMenuScrollY = 0;
+
   function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
+    mobileMenuScrollY = window.scrollY;
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenu.setAttribute('role', 'dialog');
+    mobileMenu.setAttribute('aria-modal', 'true');
+    if (navBurger) navBurger.setAttribute('aria-expanded', 'true');
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${mobileMenuScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
     document.body.style.overflow = 'hidden';
+    mobileMenu.querySelector('.mobile-close').focus();
   }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
+
+  function closeMobileMenu(restoreScroll = true) {
+    if (!mobileMenu.classList.contains('open')) return;
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenu.removeAttribute('role');
+    mobileMenu.removeAttribute('aria-modal');
+    if (navBurger) navBurger.setAttribute('aria-expanded', 'false');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
     document.body.style.overflow = '';
+    if (restoreScroll) window.scrollTo(0, mobileMenuScrollY);
   }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
 
   /* ── Before/After sliders (generic) ──
      Pointer-event driven so the handle always tracks the real cursor
